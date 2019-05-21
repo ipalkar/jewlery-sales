@@ -3,7 +3,10 @@ import React from 'react';
 export default class Header extends React.Component {
   render() {
     return (
-      <h1 className = " col-12">Wicked Sales</h1>
+      <div className = " col-12 mt-1">
+        <h1 >Wicked Sales</h1>
+        <h2>Items in cart: {this.props.cartItemCount}</h2>
+      </div>
     );
   }
 }
