@@ -20,6 +20,15 @@ img{
     padding: 1rem;
 }
 
+.details{
+    display: inline-block;
+}
+
+.details-container{
+    margin: auto;
+    width: 75%;
+}
+
 
 
 
