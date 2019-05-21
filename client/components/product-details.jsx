@@ -21,7 +21,7 @@ export default class ProductDetails extends React.Component {
     if (this.state.isLoaded) {
       return (
         <div className = {'details-container'}>
-          <Header></Header>
+          <Header cartItemCount ={this.props.cartItemCount}></Header>
           <div className = {'col-12 ml-2'}>
             <button onClick ={() => this.props.onClick('catalog', {})} className = {'btn btn-link'}>Back to Catalog</button>
           </div>
@@ -33,6 +33,7 @@ export default class ProductDetails extends React.Component {
               <h1>{this.state.product.name}</h1>
               <div>${this.state.product.price}</div>
               <p>{this.state.product.shortDescription}</p>
+              <button onClick ={() => this.props.addToCart(this.state.product)} className ={'btn btn-outline-primary'}>Add to Cart</button>
             </div>
           </div>
           <div className = {'col-12'}>
