@@ -1,0 +1,25 @@
+
+.body{
+    height: 100vh;
+}
+
+.h1{
+    height: 15vh;
+}
+
+img{
+   height: 15rem;
+}
+
+.card{
+    height: 27rem;
+}
+
+.card-container{
+    width: 33.33%;
+    padding: 1rem;
+}
+
+
+
+
