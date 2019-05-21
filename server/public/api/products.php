@@ -1,6 +1,7 @@
 <?php
 
 require_once('./products.php');
+require_once('./mysql_credentials.php');
 
 header('Content-Type: application/json');
 
@@ -13,5 +14,6 @@ header('Content-Type: application/json');
 set_exception_handler(error_handler);
 $output = file_get_contents('products_list.json');
 print($output);
+print_r($conn);
 
 ?>
