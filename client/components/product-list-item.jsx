@@ -3,7 +3,7 @@ import React from 'react';
 export default class ProductListItem extends React.Component {
   render() {
     return (
-      <div className = ' card-container'>
+      <div onClick = {this.props.click} className = ' card-container'>
         <div className = 'card'>
           <img className = "card-img-top" src={this.props.products.image} />
           <div className = "card-body">
