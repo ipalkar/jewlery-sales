@@ -21,7 +21,7 @@ export default class ProductDetails extends React.Component {
     if (this.state.isLoaded) {
       return (
         <div className = {'details-container'}>
-          <Header cartItemCount ={this.props.cartItemCount}></Header>
+          <Header onClick = {this.props.onClick} cartItemCount ={this.props.cartItemCount}></Header>
           <div className = {'col-12 ml-2'}>
             <button onClick ={() => this.props.onClick('catalog', {})} className = {'btn btn-link'}>Back to Catalog</button>
           </div>

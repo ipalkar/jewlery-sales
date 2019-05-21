@@ -5,7 +5,7 @@ export default class Header extends React.Component {
     return (
       <div className = " col-12 mt-1">
         <h1 >Wicked Sales</h1>
-        <h2>Items in cart: {this.props.cartItemCount}</h2>
+        <h2><i onClick = {() => this.props.onClick('cart', {})}className="fas fa-shopping-cart"></i> {this.props.cartItemCount}</h2>
       </div>
     );
   }

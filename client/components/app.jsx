@@ -2,6 +2,7 @@ import React from 'react';
 import Header from './header';
 import ProductList from './product-list';
 import ProductDetails from './product-details';
+import CartSummary from './cartSummary';
 
 export default class App extends React.Component {
   constructor(props) {
@@ -43,11 +44,10 @@ export default class App extends React.Component {
       headers: { 'Content-type': 'application/json' }
 
     })
-      .then(response => response.json)
-      .then(newProduct => {
-        const products = this.state.cart.concat(newProduct);
-        this.setState({ cart: products });
-      });
+      .then(response => response.json);
+
+    const products = this.state.cart.concat(product);
+    this.setState({ cart: products });
   }
 
   setView(name, params) {
@@ -65,7 +65,7 @@ export default class App extends React.Component {
     if (this.state.view.name === 'catalog') {
       return (<div className = 'container'>
         <div className = 'row'>
-          <Header cartItemCount ={this.state.cart.length}></Header>
+          <Header onClick={this.setView} cartItemCount ={this.state.cart.length}></Header>
         </div>
         <div className = "d-flex justify-content-around">
           <div className = 'row '>
@@ -73,6 +73,8 @@ export default class App extends React.Component {
           </div>
         </div>
       </div>);
+    } else if (this.state.view.name === 'cart') {
+      return <CartSummary onClick ={this.setView} cart = {this.state.cart}></CartSummary>;
     } else {
       return <ProductDetails cartItemCount ={this.state.cart.length} addToCart = {this.addToCart} onClick = {this.setView} params = {this.state.view.params} />;
     }
