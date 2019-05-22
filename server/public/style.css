@@ -20,7 +20,9 @@ h2{
 img{
    height: 15rem;
 }
-
+.cart-header{
+    font-size: 3rem;
+}
 .card{
     height: 27rem;
 }
@@ -28,6 +30,24 @@ img{
 .card-container{
     width: 33.33%;
     padding: 1rem;
+}
+
+.cart-img-height{
+    height: 12rem;
+    width: 13rem;
+}
+
+
+.cart-details{
+    display: inline-block;
+}
+
+.cart-img{
+    display: inline-block;
+}
+
+.cart-item{
+    border: 1px solid black;
 }
 
 .details{
