@@ -30,6 +30,19 @@ img{
     padding: 1rem;
 }
 
+
+.cart-details{
+    display: inline-block;
+}
+
+.cart-img{
+    display: inline-block;
+}
+
+.cart-item{
+    border: 1px solid black;
+}
+
 .details{
     display: inline-block;
 }
