@@ -2,7 +2,7 @@
 
 require_once('./products.php');
 require_once('./mysql_credentials.php');
-
+startup();
 header('Content-Type: application/json');
 
 

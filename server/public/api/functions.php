@@ -1,5 +1,5 @@
 <?php
-startup();
+
 function error_handler($error){
     http_response_code(500);
     $output =
