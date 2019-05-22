@@ -1,13 +1,11 @@
 <?php
-
 require_once('./products.php');
 require_once('./mysql_credentials.php');
-startup();
+
 header('Content-Type: application/json');
 
-
 set_exception_handler(error_handler);
-
+startup();
 
 $query = 'SELECT * FROM `products`';
 $result = mysqli_query($conn, $query);
