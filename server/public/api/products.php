@@ -12,8 +12,21 @@ header('Content-Type: application/json');
 //}
 
 set_exception_handler(error_handler);
-$output = file_get_contents('products_list.json');
-print($output);
+
 print_r($conn);
 
+$query = 'SELECT * FROM `products`';
+$result = mysqli_query($conn, $query);
+
+if(!$result){
+    throw new Exception(mysqli_error);
+    exit();
+}
+$output = [success=>true,data=>[]];
+
+while($row = mysqli_fetch_assoc($result)){
+    $output['data'][] = $row;
+}
+$json_output =json_encode($output);
+print($json_output);
 ?>
