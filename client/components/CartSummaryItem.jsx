@@ -5,12 +5,12 @@ export default class CartSummaryItem extends React.Component {
     return (
       <div className = 'container cart-item col-8'>
         <div className = {'col-3 cart-img'}>
-          <img src={this.props.product.image} />
+          <img className = {'cart-img-height mb-5'}src={this.props.product.image} />
         </div>
-        <div className ={'col-4 cart-details mt-2'} >
-          <h5 >{this.props.product.name}</h5>
+        <div className ={'col-4 cart-details mt-2 ml-5'}>
+          <h5 className ={'mt-3'} >{this.props.product.name}</h5>
           <div>${this.props.product.price}</div>
-          <p> {this.props.product.shortDescription}</p>
+          <p>{this.props.product.shortDescription}</p>
         </div>
       </div>);
 

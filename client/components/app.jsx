@@ -12,10 +12,8 @@ export default class App extends React.Component {
       view: { name: 'catalog', params: {} },
       cart: []
     };
-
     this.setView = this.setView.bind(this);
     this.addToCart = this.addToCart.bind(this);
-
   }
 
   getAllProducts() {
@@ -25,7 +23,6 @@ export default class App extends React.Component {
       .then(response => response.json())
       .then(products => this.setState({ products: products }))
       .catch(error => console.error('No products available', error));
-
   }
 
   getCartItems() {
