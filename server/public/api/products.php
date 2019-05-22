@@ -14,12 +14,11 @@ $result = mysqli_query($conn, $query);
 
 if(!$result){
     throw new Exception(mysqli_error);
-    exit();
 }
-$output = [success=>true,data=>[]];
+$output = [];
 
 while($row = mysqli_fetch_assoc($result)){
-    $output['data'][] = $row;
+    $output[] = $row;
 }
 $json_output =json_encode($output);
 print($json_output);
