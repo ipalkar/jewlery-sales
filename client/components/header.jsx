@@ -4,8 +4,11 @@ export default class Header extends React.Component {
   render() {
     return (
       <div className = " col-12 mt-1">
-        <h1 >Wicked Sales</h1>
-        <h2><i onClick = {() => this.props.onClick('cart', {})}className="fas fa-shopping-cart"></i> {this.props.cartItemCount}</h2>
+
+        <h1 className={'main-title'}>
+          <img className ={'logo'} src="https://pbs.twimg.com/profile_images/2153334389/Transparent_Logo.png" />
+            Wicked Sales</h1>
+        <h2><i onClick = {() => this.props.onClick('cart', {})}className="fas fa-shopping-bag"></i> {this.props.cartItemCount}</h2>
       </div>
     );
   }
