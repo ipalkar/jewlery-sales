@@ -18,7 +18,8 @@ export default class App extends React.Component {
 
   getAllProducts() {
     fetch('/api/products.php', {
-      method: 'GET'
+      method: 'GET',
+      headers: { 'Content-type': 'application/json' }
     })
       .then(response => response.json())
       .then(products => this.setState({ products: products }))
@@ -48,9 +49,7 @@ export default class App extends React.Component {
   }
 
   setView(name, params) {
-
     this.setState({ view: { name: name, params: params } });
-
   }
 
   componentDidMount() {
