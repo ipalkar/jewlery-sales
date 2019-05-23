@@ -3,7 +3,7 @@ import React from 'react';
 export default class CartSummaryItem extends React.Component {
   render() {
     return (
-      <div className = 'container cart-item col-8'>
+      <div className = ' cart-item col-8'>
         <div className = {'col-3 cart-img'}>
           <img className = {'cart-img-height mb-5'}src={this.props.product.image} />
         </div>

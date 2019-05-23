@@ -1,16 +1,16 @@
 [
   {
     "id": 3,
-    "name": "Snuggie",
+    "name": "Sparkle Earrings",
     "price": 2900,
-    "image": "https://bit.ly/2LVHYAk",
+    "image": "https://cdn.shopify.com/s/files/1/1770/7639/products/IMG_4761_large.JPG?",
     "shortDescription": "Super-Soft Fleece with pockets! One Size fits all Adults! Keeps you Warm & Your Hands-Free!"
   },
   {
     "id": 5,
-    "name": "Ostrich Pillow",
+    "name": "Heart Hoops",
     "price": 9900,
-    "image": "https://bit.ly/2VD80b8",
+    "image": "https://cdn.shopify.com/s/files/1/1770/7639/products/Lovers_Hoops_large.jpg?v=1553272363",
     "shortDescription": "Create your own snugly space in the world and feel-good anywhere with the ultimate cocoon pillow."
   }
 ]
