@@ -13,7 +13,7 @@ export default class CartSummary extends React.Component {
         </header>
         {this.props.cart.map(product => (<CartSummaryItem key = {product.id } product ={product}></CartSummaryItem>))}
         <h3> Item Total: ${this.props.cart.reduce(function (accumulator, currentValue) {
-          return accumulator + parseInt(currentValue.price);
+          return (accumulator + (parseInt(currentValue.price) * 0.01));
         }, 0)}</h3>
       </div>
     );

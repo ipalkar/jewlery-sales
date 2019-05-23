@@ -10,7 +10,7 @@ export default class ProductDetails extends React.Component {
   }
 
   componentDidMount() {
-    fetch('/api/products.php?id=1', {
+    fetch('/api/products.php?id=' + this.props.id, {
       method: 'GET'
     })
       .then(response => response.json())
@@ -26,14 +26,16 @@ export default class ProductDetails extends React.Component {
             <button onClick ={() => this.props.onClick('catalog', {})} className = {'btn btn-link'}>Back to Catalog</button>
           </div>
           <div className={'col-12 mt-3 mb-3 '}>
-            <div className={'col-5 details'}>
-              <img src={this.state.product.image} />
+            <div className={'col-6 details'}>
+              <img className ="details-img"src={this.state.product.image} />
             </div>
-            <div className = {'col-4 details'}>
-              <h1>{this.state.product.name}</h1>
-              <div>${this.state.product.price}</div>
-              <p>{this.state.product.shortDescription}</p>
-              <button onClick ={() => this.props.addToCart(this.state.product)} className ={'btn btn-outline-primary'}>Add to Cart</button>
+            <div className = {'col-6 details'}>
+              <div>
+                <h1>{this.state.product.name}</h1>
+                <div>${this.state.product.price}</div>
+                <p>{this.state.product.shortDescription}</p>
+                <button onClick ={() => this.props.addToCart(this.state.product)} className ={'btn btn-outline-primary'}>Add to Cart</button>
+              </div>
             </div>
           </div>
           <div className = {'col-12'}>

@@ -9,7 +9,7 @@ export default class CartSummaryItem extends React.Component {
         </div>
         <div className ={'col-4 cart-details mt-2 ml-5'}>
           <h5 className ={'mt-3'} >{this.props.product.name}</h5>
-          <div>${this.props.product.price}</div>
+          <div>${(this.props.product.price * 0.01).toFixed(2)}</div>
           <p>{this.props.product.shortDescription}</p>
         </div>
       </div>);

@@ -15,6 +15,17 @@ h1{
 h2{
     display: inline-block;
     float:right;
+    margin-top: 2rem;
+    margin-right: 1rem;
+}
+
+.details-img{
+    object-fit: scale-down;
+    object-position: top;
+    min-height: 32em;
+    max-height: 55em;
+    display: block;
+    margin: 0 auto;
 }
 
 img{
@@ -29,7 +40,8 @@ img{
 
 .card-container{
     width: 33.33%;
-    padding: 1rem;
+    padding: 2rem;
+    margin-bottom:2rem;
 }
 
 .cart-img-height{
@@ -37,6 +49,20 @@ img{
     width: 13rem;
 }
 
+.main-title{
+    font-family: "Apple Chancery";
+    font-size: 4rem;
+    margin-top:1rem;
+}
+
+.card-img-top{
+    height:438px;
+}
+.pink-stripe{
+    height: 5vh;
+    display: block;
+    background-color: #f8dbe0;
+}
 
 .cart-details{
     display: inline-block;
@@ -52,6 +78,7 @@ img{
 
 .details{
     display: inline-block;
+    vertical-align: top;
 }
 
 .details-container{

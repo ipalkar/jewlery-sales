@@ -12,6 +12,7 @@ export default class App extends React.Component {
       view: { name: 'catalog', params: {} },
       cart: []
     };
+    this.productDetailItemId = null;
     this.setView = this.setView.bind(this);
     this.addToCart = this.addToCart.bind(this);
   }
@@ -48,8 +49,9 @@ export default class App extends React.Component {
     this.setState({ cart: products });
   }
 
-  setView(name, params) {
+  setView(name, params, id) {
     this.setState({ view: { name: name, params: params } });
+    this.productDetailItemId = id;
   }
 
   componentDidMount() {
@@ -59,20 +61,25 @@ export default class App extends React.Component {
 
   render() {
     if (this.state.view.name === 'catalog') {
-      return (<div className = 'container'>
-        <div className = 'row'>
-          <Header onClick={this.setView} cartItemCount ={this.state.cart.length}></Header>
-        </div>
-        <div className = "d-flex justify-content-around">
-          <div className = 'row '>
-            <ProductList onClick = {this.setView} products = {this.state.products}></ProductList>
+      return (
+        <div>
+          <div className ={'pink-stripe'}></div>
+          <div className = 'container'>
+            <div className = 'row'>
+              <Header onClick={this.setView} cartItemCount ={this.state.cart.length}></Header>
+            </div>
+            <div className = "d-flex justify-content-around">
+              <div className = 'row '>
+                <ProductList onClick = {this.setView} products = {this.state.products}></ProductList>
+              </div>
+            </div>
           </div>
         </div>
-      </div>);
+      );
     } else if (this.state.view.name === 'cart') {
       return <CartSummary onClick ={this.setView} cart = {this.state.cart}></CartSummary>;
     } else {
-      return <ProductDetails cartItemCount ={this.state.cart.length} addToCart = {this.addToCart} onClick = {this.setView} params = {this.state.view.params} />;
+      return <ProductDetails id = {this.productDetailItemId} cartItemCount ={this.state.cart.length} addToCart = {this.addToCart} onClick = {this.setView} params = {this.state.view.params} />;
     }
 
   }
