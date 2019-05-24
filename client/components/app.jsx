@@ -18,6 +18,7 @@ export default class App extends React.Component {
     this.setView = this.setView.bind(this);
     this.addToCart = this.addToCart.bind(this);
     this.placeOrder = this.placeOrder.bind(this);
+    this.deleteFromCart = this.deleteFromCart.bind(this);
   }
 
   getAllProducts() {
@@ -50,6 +51,20 @@ export default class App extends React.Component {
     this.setState({ cart: products });
   }
 
+  deleteFromCart(product) {
+    fetch('/api/cart.php', {
+      method: 'DELETE',
+      body: JSON.stringify(product),
+      headers: { 'Content-type': 'application/json' }
+    })
+      .then(response => response.json);
+    const products = this.state.cart.filter(function (item) {
+      return item !== product;
+    });
+    this.setState({ cart: products });
+
+  }
+
   placeOrder(orderInfo) {
     orderInfo['cart'] = this.state.cart;
     fetch('api/orders.php', {
@@ -59,7 +74,6 @@ export default class App extends React.Component {
       .then(response => response.json);
     this.setState({ cart: [] });
     this.setView('thanks', {});
-
   }
 
   setView(name, params, id) {
@@ -90,7 +104,7 @@ export default class App extends React.Component {
         </div>
       );
     } else if (this.state.view.name === 'cart') {
-      return <CartSummary onClick ={this.setView} cart = {this.state.cart}></CartSummary>;
+      return <CartSummary onClick ={this.setView} cart = {this.state.cart} remove ={this.deleteFromCart}></CartSummary>;
     } else if (this.state.view.name === 'checkout') {
       return <CheckoutForm onClick ={this.placeOrder} cart = {this.state.cart} click ={this.setView}/>;
     } else if (this.state.view.name === 'details') {

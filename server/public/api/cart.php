@@ -10,7 +10,11 @@ if ($method == 'GET') {
 } else if ($method == 'POST') {
   http_response_code(201);
   print($item);
-} else {
+}else if ($method === 'DELETE'){
+  http_response_code(201);
+  print($item);
+}
+else {
   http_response_code(404);
   print(json_encode([
     'error' => 'Not Found',

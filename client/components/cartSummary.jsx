@@ -24,11 +24,12 @@ export default class CartSummary extends React.Component {
             <h3 className= {'cart-header'}>My Cart</h3>
             <button onClick ={() => this.props.onClick('catalog', {})} className = {'btn btn-link btn-back-details'}>Back to Catalog</button>
           </header>
-          {this.props.cart.map(product => (<CartSummaryItem key = {product.id } product ={product}></CartSummaryItem>))}
+          {this.props.cart.map(product => (<CartSummaryItem remove ={this.props.remove} key = {product.id } product ={product}></CartSummaryItem>))}
 
           <h3> Subtotal: ${this.props.cart.reduce(function (accumulator, currentValue) {
             return (accumulator + (parseInt(currentValue.price) * 0.01));
           }, 0)}</h3>
+
           <button onClick={() => this.props.onClick('checkout', {})} className ={'btn btn-cart'}>Checkout</button>
         </div>
       </div>
