@@ -11,6 +11,44 @@
     height: 5rem;
 }
 
+label,input{
+    display: block;
+}
+label{
+    font-size: 2rem;
+}
+
+
+.thanks{
+    font-family:"Apple Chancery";
+    font-size: 3rem;
+    margin: auto;
+    width: 50%;
+    text-align: center;
+    margin-top: 12rem;
+}
+
+.summary-items{
+    font-size: 20px;
+    padding: 0.5rem;
+}
+
+.img-last {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    height:30rem;
+}
+
+input,textarea{
+    width: 25rem;
+}
+
+.order-form,.order-summary{
+    display: inline-block;
+    vertical-align: top;
+}
+
 h1{
     display: inline-block;
 }
@@ -21,6 +59,7 @@ h1{
     text-align: left;
     margin-bottom: 1rem;
     border: 1px solid lavenderblush;
+    display: inline-block;
 }
 
 h2{
