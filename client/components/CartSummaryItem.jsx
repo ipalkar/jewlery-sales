@@ -11,6 +11,7 @@ export default class CartSummaryItem extends React.Component {
           <h5 className ={'mt-3'} >{this.props.product.name}</h5>
           <div>${(this.props.product.price * 0.01).toFixed(2)}</div>
           <p>{this.props.product.shortDescription}</p>
+            <div>Quantity: {this.props.product.quantity}</div>
           <button onClick={() => this.props.remove(this.props.product)} className ={'btn btn-cart'}>Remove</button>
 
         </div>
