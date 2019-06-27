@@ -47,26 +47,23 @@ export default class App extends React.Component {
     })
       .then(response => response.json);
 
-    if (this.state.cart.indexOf(product) === -1){
-      product['quantity']=1;
-      var products = this.state.cart.concat(product);
-    }
-    else{
+    if (this.state.cart.indexOf(product) === -1) {
+      product['quantity'] = 1;
+      let products = this.state.cart.concat(product);
+    } else {
 
       const selectedProduct = this.state.cart.filter(function (item) {
         return item === product;
       });
-      selectedProduct[0].quantity = selectedProduct[0].quantity+1;
-      selectedproduct[0].price = selectedProduct[0].price +selectedProduct[0].price;
+      selectedProduct[0].quantity = selectedProduct[0].quantity + 1;
+      selectedProduct[0].price = selectedProduct[0].price + selectedProduct[0].price;
 
       const productsRemovedSelected = this.state.cart.filter(function (item) {
         return item !== product;
       });
 
-
-      var products = productsRemoveSelected.concat(selectedProduct);
+      let products = productsRemoveSelected.concat(selectedProduct);
     }
-
 
     this.setState({ cart: products });
   }
@@ -112,7 +109,7 @@ export default class App extends React.Component {
         <div>
           <div className ={'pink-stripe'}></div>
           <div className = 'container'>
-            <div className = 'row'>
+            <div>
               <Header onClick={this.setView} cartItemCount ={this.state.cart.length}></Header>
             </div>
             <div className = "d-flex justify-content-around">

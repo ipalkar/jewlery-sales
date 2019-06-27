@@ -8,12 +8,48 @@
 }
 
 .logo{
-    height: 5rem;
+    max-height: 5vmax;
+}
+
+/*.cart-icon{*/
+    /*display: inline-block;*/
+    /*position: absolute;*/
+    /*top: 30%;*/
+    /*transform: translateY(-40%);*/
+/*}*/
+@media only screen and (max-width:940px){ /* Tablets*/
+    .details-text {
+        font-size:1.3rem;
+    }
+}
+
+.details-price{
+    font-size: 1rem;
+
+}
+
+@media only screen and (max-width:940px){ /* Tablets*/
+    .details-price {
+        font-size:1rem;
+    }
+}
+
+@media(max-width:544px){
+    .cart-icon{
+        font-size:20px;
+    }
+}
+
+@media only screen and (max-width:940px){ /* Tablets*/
+    .header-responsive{
+        font-size:20px;
+    }
 }
 
 label,input{
     display: block;
 }
+
 label{
     font-size: 2rem;
 }
@@ -64,17 +100,35 @@ h1{
 
 h2{
     display: inline-block;
-    float:right;
-    margin-top: 2.5rem;
-    margin-right: 1rem;
+    /*float:right;*/
+    /*margin-top: 2.5rem;*/
+    /*margin-right: 1rem;*/
+}
+
+.shopping-cart{
+    position:absolute;
+    right: 0px;
+    top: 8.8%;
+}
+
+@media screen and (max-width: 800px) {
+    .shopping-cart {
+        top: 8%;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .shopping-cart {
+        top:8.7%;
+    }
 }
 
 .details-img{
     object-position: top;
-    min-height: 42em;
-    max-height: 55em;
     display: block;
     margin: 0 auto;
+    max-width: 100%;
+    height: auto;
 }
 
 img{
@@ -88,12 +142,9 @@ img{
     height: 27rem;
 }
 
-.details-price{
-    font-size: 2rem;
-}
 
 .card-container{
-    width: 33.33%;
+    /*width: 33.33%;*/
     padding: 2rem;
     margin-bottom:2rem;
     font-family: 'Ovo', Georgia, serif;
@@ -112,15 +163,23 @@ img{
     width: 13rem;
 }
 
+@media screen and (max-width: 600px) {
+    .main-title {
+        font-size: 30px;
+    }
+}
+
 .main-title{
     font-family: "Apple Chancery";
-    font-size: 4rem;
     margin-top:1rem;
 }
+
 
 .card-img-top{
     height:438px;
 }
+
+
 .pink-stripe{
     height: 5vh;
     display: block;
@@ -148,6 +207,7 @@ img{
     margin: auto;
     width: 75%;
 }
+
 
 
 

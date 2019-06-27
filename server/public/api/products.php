@@ -5,7 +5,7 @@ require('./functions.php');
 
 header('Content-Type: application/json');
 
-set_exception_handler(error_handler);
+//set_exception_handler(error_handler);
 startup();
 
 $whereClause ='';

@@ -3,7 +3,7 @@ import React from 'react';
 export default class ProductListItem extends React.Component {
   render() {
     return (
-      <div id ={this.props.products.id} onClick = {() => this.props.click('details', {}, this.props.products.id)} className = ' card-container '>
+      <div id ={this.props.products.id} onClick = {() => this.props.click('details', {}, this.props.products.id)} className = ' card-container col-lg-4 col-sm-6 col-xs-12'>
         <div className = 'card'>
           <img className = "card-img-top" src={this.props.products.image} />
           <div className = "card-body">

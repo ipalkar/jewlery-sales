@@ -27,7 +27,7 @@ export default class CartSummary extends React.Component {
           {this.props.cart.map(product => (<CartSummaryItem remove ={this.props.remove} key = {product.id } product ={product}></CartSummaryItem>))}
 
           <h3> Subtotal: ${this.props.cart.reduce(function (accumulator, currentValue) {
-            return (accumulator + (parseInt(currentValue.price) * 0.01))
+            return (accumulator + (parseInt(currentValue.price) * 0.01));
           }, 0)}</h3>
 
           <button onClick={() => this.props.onClick('checkout', {})} className ={'btn btn-cart'}>Checkout</button>
