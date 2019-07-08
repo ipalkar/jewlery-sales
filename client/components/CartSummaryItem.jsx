@@ -11,7 +11,6 @@ export default class CartSummaryItem extends React.Component {
         </div>
         <div className="description">
           <span>{this.props.product.name}</span>
-          <span>{this.props.product.shortDescription}</span>
         </div>
         <div className="quantity">
           <div>Quantity: {this.props.product.quantity}</div>

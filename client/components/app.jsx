@@ -12,7 +12,7 @@ export default class App extends React.Component {
     super(props);
     this.state = {
       products: [],
-      view: { name: 'catalog', params: {} },
+      view: { name: 'main-page', params: {} },
       cart: [],
       cartItemCount: 0
     };
@@ -96,7 +96,7 @@ export default class App extends React.Component {
       headers: { 'Content-type': 'application/json' }
     })
       .then(response => response.json);
-    this.setState({ cart: [] });
+    this.setState({ cart: [], cartItemCount: 0 });
     this.setView('thanks', {});
   }
 
@@ -136,7 +136,7 @@ export default class App extends React.Component {
     } else if (this.state.view.name === 'thanks') {
       return <ThankYou onClick ={this.setView}/>;
     } else if (this.state.view.name === 'main-page') {
-      return <MainPage/>;
+      return <MainPage onClick = {this.setView} products = {this.state.products} cartItemCount = {this.state.cartItemCount}></MainPage>;
     }
 
   }
