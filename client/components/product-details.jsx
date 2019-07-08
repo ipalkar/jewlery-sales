@@ -24,9 +24,6 @@ export default class ProductDetails extends React.Component {
           <div className ={'pink-stripe'}></div>
           <div className = {'details-container'}>
             <Header onClick = {this.props.onClick} cartItemCount ={this.props.cartItemCount}></Header>
-            <div className = {'col-12 ml-2'}>
-
-            </div>
             <div className={' mt-3 mb-3 '}>
               <div className={'col-sm-6 col-lg-6 col-xs-6 details'}>
                 <img className ="details-img mb-2"src={this.state.product.image} />

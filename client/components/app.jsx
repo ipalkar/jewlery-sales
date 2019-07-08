@@ -5,6 +5,7 @@ import ProductDetails from './product-details';
 import CartSummary from './cartSummary';
 import CheckoutForm from './checkout-form';
 import ThankYou from './thank-you';
+import MainPage from './main-page';
 
 export default class App extends React.Component {
   constructor(props) {
@@ -12,7 +13,8 @@ export default class App extends React.Component {
     this.state = {
       products: [],
       view: { name: 'catalog', params: {} },
-      cart: []
+      cart: [],
+      cartItemCount: 0
     };
     this.productDetailItemId = null;
     this.setView = this.setView.bind(this);
@@ -47,25 +49,28 @@ export default class App extends React.Component {
     })
       .then(response => response.json);
 
-    if (this.state.cart.indexOf(product) === -1) {
-      product['quantity'] = 1;
-      let products = this.state.cart.concat(product);
-    } else {
+    let productId = product.id;
+    let itemInCart = this.state.cart.filter(item => { return item.id === productId; });
 
-      const selectedProduct = this.state.cart.filter(function (item) {
-        return item === product;
-      });
-      selectedProduct[0].quantity = selectedProduct[0].quantity + 1;
-      selectedProduct[0].price = selectedProduct[0].price + selectedProduct[0].price;
-
-      const productsRemovedSelected = this.state.cart.filter(function (item) {
-        return item !== product;
-      });
-
-      let products = productsRemoveSelected.concat(selectedProduct);
+    if (this.state.cart.length === 0) {
+      this.setState({ cartItemCount: 0 });
     }
 
-    this.setState({ cart: products });
+    if (itemInCart.length === 0) {
+      product['quantity'] = 1;
+      let products = this.state.cart.concat(product);
+      let itemCount = this.state.cartItemCount + 1;
+      this.setState({ cart: products, cartItemCount: itemCount });
+    } else {
+      let itemInCart = this.state.cart.filter(item => { return item.id === productId; });
+      const priceCount = itemInCart[0].price / itemInCart[0].quantity;
+      itemInCart[0].quantity = itemInCart[0].quantity + 1;
+      itemInCart[0].price = priceCount * itemInCart[0].quantity;
+      let otherItemsInCart = this.state.cart.filter(item => { return item.id !== product.id; });
+      let products = otherItemsInCart.concat(itemInCart[0]);
+      let itemCount = this.state.cartItemCount + 1;
+      this.setState({ cart: products, cartItemCount: itemCount });
+    }
   }
 
   deleteFromCart(product) {
@@ -78,7 +83,9 @@ export default class App extends React.Component {
     const products = this.state.cart.filter(function (item) {
       return item !== product;
     });
-    this.setState({ cart: products });
+    let cartItemCount = this.state.cartItemCount - product.quantity;
+
+    this.setState({ cart: products, cartItemCount: cartItemCount });
 
   }
 
@@ -110,7 +117,7 @@ export default class App extends React.Component {
           <div className ={'pink-stripe'}></div>
           <div className = 'container'>
             <div>
-              <Header onClick={this.setView} cartItemCount ={this.state.cart.length}></Header>
+              <Header onClick={this.setView} cartItemCount ={this.state.cartItemCount}></Header>
             </div>
             <div className = "d-flex justify-content-around">
               <div className = 'row '>
@@ -125,10 +132,13 @@ export default class App extends React.Component {
     } else if (this.state.view.name === 'checkout') {
       return <CheckoutForm onClick ={this.placeOrder} cart = {this.state.cart} click ={this.setView}/>;
     } else if (this.state.view.name === 'details') {
-      return <ProductDetails id = {this.productDetailItemId} cartItemCount ={this.state.cart.length} addToCart = {this.addToCart} onClick = {this.setView} params = {this.state.view.params} />;
+      return <ProductDetails id = {this.productDetailItemId} cartItemCount ={this.state.cartItemCount} addToCart = {this.addToCart} onClick = {this.setView} params = {this.state.view.params} />;
     } else if (this.state.view.name === 'thanks') {
       return <ThankYou onClick ={this.setView}/>;
+    } else if (this.state.view.name === 'main-page') {
+      return <MainPage/>;
     }
+
   }
 
 }
