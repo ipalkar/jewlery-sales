@@ -163,6 +163,10 @@ img{
     width: 13rem;
 }
 
+.icons{
+    display: inline-block;
+}
+
 @media screen and (max-width: 600px) {
     .main-title {
         font-size: 30px;
@@ -172,6 +176,7 @@ img{
 .main-title{
     font-family: "Apple Chancery";
     margin-top:1rem;
+    display: inline-block;
 }
 
 
