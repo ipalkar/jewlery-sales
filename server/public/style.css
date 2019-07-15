@@ -23,8 +23,88 @@
     }
 }
 
+.product-quantity-input {
+    display: block;
+    background: #FFF;
+    text-align: center;
+    width: 100%;
+    padding: 5px 25px;
+    margin: 0;
+    border: none;
+    height: 40px;
+    font-size: 1.125em;
+}
+
+.product-quantity{
+    display: inline-block;
+}
+
+.product-quantity label{
+    font-size: 1.125em;
+    font-weight: 500;
+    line-height: 40px;
+    float: left;
+}
+
+.product-quantity-controls{
+    position: relative;
+    margin-left: 0.5em;
+    margin-right: 0.5em;
+    margin-bottom: 0px;
+    max-width: 100px;
+    min-width: 75px;
+    overflow: visible;
+    -webkit-backface-visibility: hidden;
+    -moz-backface-visibility: hidden;
+    -ms-backface-visibility: hidden;
+    -o-backface-visibility: hidden;
+    backface-visibility: hidden;
+    display: inline-block;
+    vertical-align: middle;
+    max-width: none;
+    width: 110px;
+    float: left;
+}
+
+ .decrement {
+    left: 0;
+}
+
+ .product-quantity-control-button {
+    cursor: pointer;
+    position: absolute;
+    display: block;
+    top: 1px;
+    border: 0 none;
+    background: none;
+    text-align: center;
+    overflow: hidden;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    -o-user-select: none;
+    user-select: none;
+    -webkit-transition: all 0.2s ease-out;
+    -moz-transition: all 0.2s ease-out;
+    -ms-transition: all 0.2s ease-out;
+    -o-transition: all 0.2s ease-out;
+    transition: all 0.2s ease-out;
+    color: #acacac;
+    font-size: 2em;
+    padding-bottom: 0.5em;
+    padding-left: 0;
+    padding-right: 0;
+    width: 1.5em;
+}
+
+
+
+.product-quantity-controls .increment {
+    right: 0;
+}
+
 .details-price{
-    font-size: 1rem;
+    font-size: 1.5rem;
 
 }
 
@@ -156,6 +236,7 @@ img{
     width: 10rem;
     height: 3rem;
     font-size: 1.2rem;
+    display: inline-block;
 }
 
 .cart-img-height{
@@ -293,10 +374,16 @@ img{
     height: auto;
 }
 
+.product-details-style{
+    font-family: 'Ovo', Georgia, serif;
+    color: #444444;
+}
+
 .best-sellers{
     text-align: center;
     font-size: 3vh;
     font-family: 'Ovo', Georgia, serif;
+    color: #444444;
 }
 
 button:focus,
