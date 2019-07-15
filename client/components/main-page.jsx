@@ -1,6 +1,6 @@
 import React from 'react';
 import Header from './header';
-import ProductList from './product-list';
+import BestSellers from './best-sellers';
 
 export default class MainPage extends React.Component {
   render() {
@@ -18,7 +18,7 @@ export default class MainPage extends React.Component {
           <div className = "d-flex justify-content-around">
 
             <div className = 'row '>
-              <ProductList onClick = {this.props.onClick} products = {this.props.products}></ProductList>
+              <BestSellers onClick = {this.props.onClick} products = {this.props.products}></BestSellers>
             </div>
           </div>
         </div>

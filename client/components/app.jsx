@@ -14,7 +14,8 @@ export default class App extends React.Component {
       products: [],
       view: { name: 'main-page', params: {} },
       cart: [],
-      cartItemCount: 0
+      cartItemCount: 0,
+      bestSellers: []
     };
     this.productDetailItemId = null;
     this.setView = this.setView.bind(this);
@@ -29,8 +30,9 @@ export default class App extends React.Component {
       headers: { 'Content-type': 'application/json' }
     })
       .then(response => response.json())
-      .then(products => this.setState({ products: products }))
+      .then(products => this.setState({ products: products, bestSellers: products.slice(6) }))
       .catch(error => console.error('No products available', error));
+
   }
 
   getCartItems() {
@@ -136,7 +138,7 @@ export default class App extends React.Component {
     } else if (this.state.view.name === 'thanks') {
       return <ThankYou onClick ={this.setView}/>;
     } else if (this.state.view.name === 'main-page') {
-      return <MainPage onClick = {this.setView} products = {this.state.products} cartItemCount = {this.state.cartItemCount}></MainPage>;
+      return <MainPage onClick = {this.setView} products = {this.state.bestSellers} cartItemCount = {this.state.cartItemCount}></MainPage>;
     }
 
   }
