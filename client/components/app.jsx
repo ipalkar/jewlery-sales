@@ -123,6 +123,7 @@ export default class App extends React.Component {
             </div>
             <div className = "d-flex justify-content-around">
               <div className = 'row '>
+
                 <ProductList onClick = {this.setView} products = {this.state.products}></ProductList>
               </div>
             </div>
