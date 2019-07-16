@@ -18,7 +18,7 @@ export default class MainPage extends React.Component {
           <div className = "d-flex justify-content-around">
 
             <div className = 'row '>
-              <BestSellers onClick = {this.props.onClick} products = {this.props.products}></BestSellers>
+              <BestSellers addToCart ={this.props.addToCart} onClick = {this.props.onClick} products = {this.props.products}></BestSellers>
             </div>
           </div>
         </div>

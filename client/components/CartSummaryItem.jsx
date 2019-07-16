@@ -20,7 +20,8 @@ export default class CartSummaryItem extends React.Component {
           <button onClick={() => this.props.remove(this.props.product)} className="delete-btn btn ">X</button>
         </div>
       </div>
-    </div>);
+    </div>
+    );
 
   }
 }
