@@ -8,7 +8,7 @@
 }
 
 .logo{
-    max-height: 5vmax;
+    max-height: 6vmax;
 }
 
 /*.cart-icon{*/
@@ -248,7 +248,81 @@ img{
 img:hover + .quick-shop, .quick-shop:hover{
     display: inline-block;
 }
+.center-text{
+    display: inline-block;
+    margin:0 auto;
+    width:100px;
+    line-height: 120px;
+    font-family: 'Ovo', Georgia, serif;
+    color:#444444;
+    font-size: 1.5vmax;
+}
 
+.header-left{
+    float:left;
+    width:100px;
+}
+
+.header-right{
+    float:right;
+    width:100px;
+}
+
+.jeweliqo-header{
+    width:100%;
+}
+
+.modal-img{
+    width:60%;
+    height: 75vh;
+    display: inline-block;
+}
+
+.modal-details{
+    display: inline-block;
+    vertical-align:top;
+    font-size: 3vh;
+}
+
+.custom-modal {
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1050;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(239, 240, 241, .5);
+}
+
+.custom-modal-dialog {
+    height: 80%;
+    width: 60%;
+    background-color: white;
+    position: relative;
+    border-radius: 6px;
+    overflow: scroll;
+}
+
+.modal-fade {
+    -webkit-animation-duration: 0.5s;
+    animation-duration: 0.5s;
+    -webkit-animation-fill-mode: both;
+    animation-fill-mode: both;
+}
+
+.animate-top {
+    -webkit-animation-name: animate-top;
+    animation-name: animate-top;
+}
+
+.close-icon {
+    display: flex;
+    flex-direction: row-reverse;
+    padding-right: 10px;
+}
 
 .card-container{
     /*width: 33.33%;*/
@@ -314,8 +388,23 @@ img:hover + .quick-shop, .quick-shop:hover{
     text-align:center;
     line-height: 4vh;
     font-family: "Times New Roman";
+    font-size:1.3vw;
 
 }
+
+@media screen and (max-width: 600px) {
+    .pink-stripe {
+        font-size: 2.4vw;
+    }
+}
+
+@media screen and (max-width: 800px) {
+    .pink-stripe {
+        font-size: 2.4vw;
+    }
+}
+
+
 
 .cart-details{
     display: inline-block;

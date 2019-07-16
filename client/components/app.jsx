@@ -6,9 +6,6 @@ import CartSummary from './cartSummary';
 import CheckoutForm from './checkout-form';
 import ThankYou from './thank-you';
 import MainPage from './main-page';
-import Button from 'react-bootstrap/Button';
-import Modal from 'react-bootstrap/Modal';
-import ModalQuickShop from './modal'
 
 export default class App extends React.Component {
   constructor(props) {
@@ -121,14 +118,15 @@ export default class App extends React.Component {
       return (
         <div>
           <div className ={'pink-stripe'}>40% OFF YOUR ENTIRE ORDER WITH CODE PARTY40 AT CHECKOUT</div>
+          <div>
+            <Header onClick={this.setView} cartItemCount ={this.state.cartItemCount}></Header>
+          </div>
           <div className = 'container'>
-            <div>
-              <Header onClick={this.setView} cartItemCount ={this.state.cartItemCount}></Header>
-            </div>
+
             <div className = "d-flex justify-content-around">
               <div className = 'row '>
 
-                <ProductList  onClick = {this.setView} products = {this.state.products}></ProductList>
+                <ProductList addToCart ={this.addToCart} onClick = {this.setView} products = {this.state.products}></ProductList>
               </div>
             </div>
           </div>
@@ -143,11 +141,8 @@ export default class App extends React.Component {
     } else if (this.state.view.name === 'thanks') {
       return <ThankYou onClick ={this.setView}/>;
     } else if (this.state.view.name === 'main-page') {
-      return <MainPage onClick = {this.setView} products = {this.state.bestSellers} cartItemCount = {this.state.cartItemCount}></MainPage>;
-    }else if(this.state.view.name ==="modal"){
-     return <ModalQuickShop></ModalQuickShop>
+      return <MainPage addToCart ={this.addToCart} onClick = {this.setView} products = {this.state.bestSellers} cartItemCount = {this.state.cartItemCount}></MainPage>;
     }
-
 
   }
 

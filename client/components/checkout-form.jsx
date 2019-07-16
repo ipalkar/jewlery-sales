@@ -42,7 +42,6 @@ export default class CheckoutForm extends React.Component {
             <label > Order Summary</label>
             {this.props.cart.map(product => (<div key={this.props.cart.id} className={'summary-items'}>{product.name}  ${(product.price * 0.01).toFixed(2)}</div>))}
 
-
             <div className ={'mb-2 mt-2'}>
               <input className ={'mb-2 form-control mr-2 code-input'} placeholder={'Discount code'}type="text"/>
               <button className ={'btn btn-code'}>Apply</button>

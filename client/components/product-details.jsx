@@ -46,8 +46,9 @@ export default class ProductDetails extends React.Component {
       return (
         <div className = "product-details-style">
           <div className ={'pink-stripe'}></div>
+          <Header onClick = {this.props.onClick} cartItemCount ={this.props.cartItemCount}></Header>
           <div className = {'details-container'}>
-            <Header onClick = {this.props.onClick} cartItemCount ={this.props.cartItemCount}></Header>
+
             <div className={' mt-3 mb-3 '}>
               <div className={'col-sm-6 col-lg-6 col-xs-6 details'}>
 
