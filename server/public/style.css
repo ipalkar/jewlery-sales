@@ -222,6 +222,33 @@ img{
     height: 27rem;
 }
 
+.img-container{
+    position: relative;
+}
+
+
+.quick-shop{
+    display: none;
+    color: #222;
+    width: 100%;
+    font: 1.2rem/1 'Ovo', Georgia, serif;
+    letter-spacing: .09rem;
+    text-transform: none;
+    text-align: center;
+    position:absolute;
+    bottom:0;
+    left:0;
+    background-color: rgba(239, 240, 241, .5);
+    height: 3rem;
+    line-height: 3rem;
+
+
+}
+
+img:hover + .quick-shop, .quick-shop:hover{
+    display: inline-block;
+}
+
 
 .card-container{
     /*width: 33.33%;*/
@@ -260,6 +287,19 @@ img{
     display: inline-block;
 }
 
+.code-input{
+    display: inline-block;
+    width: 60%;
+}
+
+.btn-code{
+    background-color: lightgrey;
+    color: white;
+    font-size: 1rem;
+    display: inline-block;
+    height:2.3rem;
+}
+
 
 .card-img-top{
     height:438px;
@@ -267,9 +307,14 @@ img{
 
 
 .pink-stripe{
-    height: 3vh;
+    height: 4vh;
     display: block;
     background-color: #f8dbe0;
+    color: grey;
+    text-align:center;
+    line-height: 4vh;
+    font-family: "Times New Roman";
+
 }
 
 .cart-details{
@@ -293,8 +338,6 @@ img{
     margin: auto;
     width: 75%;
 }
-
-/* starts here*/
 
 
 .shopping-cart {

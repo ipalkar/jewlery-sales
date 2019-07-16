@@ -6,7 +6,7 @@ export default class Header extends React.Component {
       <div className = "">
         <h1 onClick = {() => this.props.onClick('main-page', {})} className={'main-title col-9 col-sm-9 col-lg-9 mt-3'}>
           <img className ={'logo'} src="https://pbs.twimg.com/profile_images/2153334389/Transparent_Logo.png" />
-                Wicked Sales</h1>
+                Jewliqo</h1>
 
         <div className = "col-3 icons">
           <button onClick = {() => this.props.onClick('catalog', {})} className = "btn-back-details mr-4">Shop All</button>

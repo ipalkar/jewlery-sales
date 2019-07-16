@@ -33,15 +33,25 @@ export default class CheckoutForm extends React.Component {
             <label > Payment information</label>
             <input className ={'mb-2 form-control'} type="text" placeholder={'Credit Card Number'}/>
 
+            <div>DISCLAIMER: FOR DEMONSTRATION PURPOSES ONLY. PLEASE DO NOT USE REAL INFORMATION.</div>
+
             <button onClick ={() => this.props.click('catalog', {})} className = {'btn btn-link btn-back-details'}>Back to Catalog</button>
             <button onClick ={() => this.props.click('cart', {})} className = {'btn btn-link btn-back-details'}>Return to Cart</button>
           </div>
           <div className ={'col-md-4 order-summary '}>
             <label > Order Summary</label>
             {this.props.cart.map(product => (<div key={this.props.cart.id} className={'summary-items'}>{product.name}  ${(product.price * 0.01).toFixed(2)}</div>))}
+
+
+            <div className ={'mb-2 mt-2'}>
+              <input className ={'mb-2 form-control mr-2 code-input'} placeholder={'Discount code'}type="text"/>
+              <button className ={'btn btn-code'}>Apply</button>
+            </div>
+
             <h3 className={'summary-items'}> Subtotal: ${this.props.cart.reduce(function (accumulator, currentValue) {
               return (accumulator + (parseInt(currentValue.price) * 0.01));
             }, 0)}</h3>
+
             <button type={'submit'} onClick={() => this.props.onClick(this.state)} className ={'btn btn-cart'}>Place Order</button>
           </div>
         </div>
