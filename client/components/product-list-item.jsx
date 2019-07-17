@@ -26,7 +26,7 @@ export default class ProductListItem extends React.Component {
             <div className ={'list-item-price'}>${(this.props.products.price * 0.01).toFixed(2) }</div>
           </div>
         </div>
-        {this.state.show && <Modal product = {this.props.products} addToCart = {this.props.addToCart} price ={this.props.products.price} name ={this.props.products.name} image ={this.props.products.image} closeModal={this.toggleModal}></Modal>}
+        {this.state.show && <Modal id ={this.props.products.id} showFullDetails = {this.props.click} product = {this.props.products} addToCart = {this.props.addToCart} price ={this.props.products.price} name ={this.props.products.name} image ={this.props.products.image} closeModal={this.toggleModal}></Modal>}
       </div>
 
     );

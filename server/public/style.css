@@ -7,9 +7,21 @@
     display:inline-block;
 }
 
+.full-details{
+    display: block;
+    margin-left: 6.7rem;
+    margin-top: 23.5rem;
+    font-size: 1.3rem;
+    color: grey;
+}
+
 .logo{
     max-height: 6vmax;
 }
+
+.qty-display{
+    display: inline-block;
+     }
 
 /*.cart-icon{*/
     /*display: inline-block;*/
@@ -273,8 +285,8 @@ img:hover + .quick-shop, .quick-shop:hover{
 }
 
 .modal-img{
-    width:60%;
-    height: 75vh;
+    width:50%;
+    height: 55vh;
     display: inline-block;
 }
 
@@ -298,7 +310,7 @@ img:hover + .quick-shop, .quick-shop:hover{
 }
 
 .custom-modal-dialog {
-    height: 80%;
+    height: 60%;
     width: 60%;
     background-color: white;
     position: relative;
@@ -347,6 +359,14 @@ img:hover + .quick-shop, .quick-shop:hover{
 
 .icons{
     display: inline-block;
+}
+
+.qty-label{
+    display: inline-flex;
+}
+
+.qty-font{
+    font-size: 1.5rem;
 }
 
 @media screen and (max-width: 600px) {

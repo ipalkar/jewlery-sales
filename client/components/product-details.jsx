@@ -62,13 +62,21 @@ export default class ProductDetails extends React.Component {
                   <p>{this.state.product.shortDescription}</p>
                   <p>Limit: 10 per customer</p>
 
-                  <div >
-                    <label htmlFor="custom-quantity">QUANTITY:</label>
-                    <div className = "product-quantity-controls">
-                      <button onClick = {this.decrementQuantity} type = "button" className = "product-quantity-control-button decrement" >-</button>
-                      <div className={'product-quantity-input'}>{this.state.quantity}</div>
-                      <button onClick ={this.incrementQuantity} type="button" className="product-quantity-control-button increment">+</button>
-                    </div>
+                  <div className = "qty-display" >
+
+                    <label className ="qty-label qty-font mr-2" htmlFor="quantity">Qty: </label>
+                    <select className ="mr-3 qty-font" id="quantity" name="quantity">
+                      <option value="1">1</option>
+                      <option value="2">2</option>
+                      <option value="3">3</option>
+                      <option value="4">4</option>
+                      <option value="5">5</option>
+                      <option value="6">6</option>
+                      <option value="7">7</option>
+                      <option value="7">8</option>
+                      <option value="7">9</option>
+                      <option value="7">10</option>
+                    </select>
                   </div>
 
                   <button onClick ={() => this.props.addToCart(this.state.product)} className ={'btn btn-cart'}>Add to Cart</button>
