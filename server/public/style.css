@@ -294,6 +294,7 @@ img:hover + .quick-shop, .quick-shop:hover{
     display: inline-block;
     vertical-align:top;
     font-size: 3vh;
+    color: #444444;
 }
 
 .custom-modal {
