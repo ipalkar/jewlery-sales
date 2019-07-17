@@ -6,7 +6,7 @@ export default class Header extends React.Component {
       <div className = "jeweliqo-header">
         <div>
           <div onClick = {() => this.props.onClick('main-page', {})} className={'main-title col-9 col-sm-9 col-lg-9 mt-3'}>
-            <img className ={'logo ml-2'} src="/images/jeweliqo-logo-2.png" />
+            <img className ={'logo ml-2'} src="/images/jeweliqo-logo-4.png" />
           </div>
 
           {/* <div className ="center-text"> */}

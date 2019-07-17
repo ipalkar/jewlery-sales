@@ -5,32 +5,15 @@ export default class ProductDetails extends React.Component {
     super(props);
     this.state = {
       product: null,
-      isLoaded: false,
-      quantity: 1
+      isLoaded: false
     };
-
-    this.incrementQuantity = this.incrementQuantity.bind(this);
-    this.decrementQuantity = this.decrementQuantity.bind(this);
-  }
-
-  incrementQuantity() {
-
-    if (this.state.quantity === 10) {
-      return;
-    }
-    this.setState({ quantity: this.state.quantity + 1 });
-  }
-
-  decrementQuantity() {
-
-    if (this.state.quantity === 1) {
-      return;
-    }
-    this.setState({ quantity: this.state.quantity - 1 });
+    this.handleChange = this.handleChange.bind(this);
   }
 
   handleChange(event) {
-    this.setState({ value: event.target.value });
+    let product = this.state.product;
+    product.quantity = event.target.value;
+    this.setState({ product: product });
   }
 
   componentDidMount() {
@@ -60,12 +43,10 @@ export default class ProductDetails extends React.Component {
                   <h1 className={'details-text'}>{this.state.product.name}</h1>
                   <div className ={'details-price mb-3'}>${(this.state.product.price * 0.01).toFixed(2)}</div>
                   <p>{this.state.product.shortDescription}</p>
-                  <p>Limit: 10 per customer</p>
 
                   <div className = "qty-display" >
-
                     <label className ="qty-label qty-font mr-2" htmlFor="quantity">Qty: </label>
-                    <select className ="mr-3 qty-font" id="quantity" name="quantity">
+                    <select onChange={this.handleChange} value = {this.state.quantity} className ="mr-3 qty-font" id="quantity" name="quantity">
                       <option value="1">1</option>
                       <option value="2">2</option>
                       <option value="3">3</option>
@@ -73,9 +54,9 @@ export default class ProductDetails extends React.Component {
                       <option value="5">5</option>
                       <option value="6">6</option>
                       <option value="7">7</option>
-                      <option value="7">8</option>
-                      <option value="7">9</option>
-                      <option value="7">10</option>
+                      <option value="8">8</option>
+                      <option value="9">9</option>
+                      <option value="10">10</option>
                     </select>
                   </div>
 

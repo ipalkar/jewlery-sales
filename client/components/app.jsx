@@ -16,7 +16,8 @@ export default class App extends React.Component {
       cart: [],
       cartItemCount: 0,
       bestSellers: [],
-      show: true
+      show: true,
+      quantity: 1
     };
     this.productDetailItemId = null;
     this.setView = this.setView.bind(this);
@@ -60,20 +61,28 @@ export default class App extends React.Component {
     }
 
     if (itemInCart.length === 0) {
-      product['quantity'] = 1;
-      let products = this.state.cart.concat(product);
-      let itemCount = this.state.cartItemCount + 1;
-      this.setState({ cart: products, cartItemCount: itemCount });
+      let itemToAdd = product;
+      if (!('quantity' in itemToAdd)) {
+        itemToAdd.quantity = 1;
+      }
+      itemToAdd.price = itemToAdd.quantity * itemToAdd.price;
+      let allProducts = this.state.cart.concat(itemToAdd);
+      let itemCount = this.state.cartItemCount + parseInt(product.quantity);
+      this.setState({ cart: allProducts, cartItemCount: itemCount });
     } else {
       let itemInCart = this.state.cart.filter(item => { return item.id === productId; });
-      const priceCount = itemInCart[0].price / itemInCart[0].quantity;
-      itemInCart[0].quantity = itemInCart[0].quantity + 1;
-      itemInCart[0].price = priceCount * itemInCart[0].quantity;
+
+      let originalPrice = parseInt(itemInCart[0].price) / parseInt(itemInCart[0].quantity);
+      let newQuantity = parseInt(itemInCart[0].quantity) + parseInt(product.quantity);
+      let newPrice = originalPrice * newQuantity;
+      itemInCart[0].price = newPrice;
+      itemInCart[0].quantity = newQuantity;
+      let itemCount = this.state.cartItemCount + parseInt(product.quantity);
       let otherItemsInCart = this.state.cart.filter(item => { return item.id !== product.id; });
       let products = otherItemsInCart.concat(itemInCart[0]);
-      let itemCount = this.state.cartItemCount + 1;
       this.setState({ cart: products, cartItemCount: itemCount });
     }
+
   }
 
   deleteFromCart(product) {
