@@ -28,19 +28,19 @@ export default class ProductDetails extends React.Component {
     if (this.state.isLoaded) {
       return (
         <div className = "product-details-style">
-          <div className ={'pink-stripe'}></div>
+          <div className ={'pink-stripe'}>40% OFF YOUR ENTIRE ORDER WITH CODE PARTY40 AT CHECKOUT</div>
           <Header onClick = {this.props.onClick} cartItemCount ={this.props.cartItemCount}></Header>
           <div className = {'details-container'}>
 
             <div className={' mt-3 mb-3 '}>
-              <div className={'col-sm-6 col-lg-6 col-xs-6 details'}>
-
+              <div className={'col-sm-12 col-lg-6 col-xs-6 details'}>
+                <div className ="point" onClick ={() => this.props.onClick('catalog', {})} className={'mb-2'}><i className = "fas fa-chevron-left"></i> Back to Catalog</div>
                 <img className ="details-img mb-2"src={this.state.product.image} />
               </div>
-              <div className = {'col-sm-6 col-lg-6 col-xs-6 details'}>
-                <div className={'product-quantity'}>
-                  <div onClick ={() => this.props.onClick('catalog', {})} className={'mb-2'}><i className = " fas fa-chevron-left"></i> Back to Catalog</div>
-                  <h1 className={'details-text'}>{this.state.product.name}</h1>
+              <div className = {'col-sm-12 col-lg-6 col-xs-6 details'}>
+                <div className={'product-quantity mt-4'}>
+
+                  <h1 className={'details-text mt-2'}>{this.state.product.name}</h1>
                   <div className ={'details-price mb-3'}>${(this.state.product.price * 0.01).toFixed(2)}</div>
                   <p>{this.state.product.shortDescription}</p>
 
@@ -60,7 +60,7 @@ export default class ProductDetails extends React.Component {
                     </select>
                   </div>
 
-                  <button onClick ={() => this.props.addToCart(this.state.product)} className ={'btn btn-cart'}>Add to Cart</button>
+                  <button onClick ={() => this.props.addToCart(this.state.product)} className ={'btn btn-cart'}>{this.props.buttonText}</button>
 
                 </div>
               </div>

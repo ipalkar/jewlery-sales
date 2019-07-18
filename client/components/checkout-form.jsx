@@ -1,4 +1,5 @@
 import React from 'react';
+import Header from './header'
 
 export default class CheckoutForm extends React.Component {
   constructor(props) {
@@ -63,11 +64,8 @@ export default class CheckoutForm extends React.Component {
     return (
       <div>
         <div className ={'pink-stripe'}></div>
-        <div className = " col-12 mt-1">
-          <h1 className={'main-title'}>
-            <img className ={'logo'} src="https://pbs.twimg.com/profile_images/2153334389/Transparent_Logo.png" />
-          </h1>
-        </div>
+        <Header cartItemCount ={this.props.cartItemCount} onClick ={this.props.onClick}></Header>
+
 
         <div className ={'container'}>
           <div className ={'col-md-7 order-form form-group '}>
@@ -99,7 +97,7 @@ export default class CheckoutForm extends React.Component {
             <h3 className={'summary-items'}>{discountVal}</h3>
             <h3 className={'summary-items'}>{totalVal}</h3>
 
-            <button type={'submit'} onClick={() => this.props.onClick(this.state)} className ={'btn btn-cart'}>Place Order</button>
+            <button type={'submit'} onClick={() => this.props.placeOrder(this.state)} className ={'btn btn-cart'}>Place Order</button>
           </div>
         </div>
 

@@ -17,6 +17,7 @@
 
 .logo{
     max-height: 6vmax;
+    cursor: pointer;
 }
 
 .qty-display{
@@ -236,6 +237,7 @@ img{
 
 .img-container{
     position: relative;
+    cursor: pointer;
 }
 
 
@@ -270,18 +272,81 @@ img:hover + .quick-shop, .quick-shop:hover{
     font-size: 1.5vmax;
 }
 
-.header-left{
-    float:left;
-    width:100px;
+
+
+.header {
+    overflow: hidden;
+    padding: 20px 10px;
+    font-family: 'Ovo', Georgia, serif;
+    color: #E294AB;
+
 }
 
-.header-right{
-    float:right;
-    width:100px;
+.bag-font{
+    font-size: 22px;
 }
 
-.jeweliqo-header{
-    width:100%;
+.shop-font{
+    font-family: 'Dosis', Helvetica, Arial, sans-serif;
+    text-transform: uppercase;
+}
+
+/* Style the header links */
+.header a {
+    float: left;
+    color: black;
+    text-align: center;
+    padding: 12px;
+    text-decoration: none;
+    font-size: 18px;
+    line-height: 25px;
+    border-radius: 4px;
+
+}
+
+.right-cart{
+    float: right
+}
+
+.subtotal-cart{
+    font-family: 'Ovo', Georgia, serif;
+    font-size: 2vh;
+}
+
+/* Style the logo link (notice that we set the same value of line-height and font-size to prevent the header to increase when the font gets bigger */
+.header a.logo {
+    font-size: 25px;
+    font-weight: bold;
+
+}
+
+/* Change the background color on mouse-over */
+.header a:hover {
+    background-color: #fff7fd;
+    color: black;
+}
+
+/* Style the active/current link*/
+.header a.active {
+    background-color: #f8dbe0;;
+    color: white;
+}
+
+/* Float the link section to the right */
+.header-right {
+    float: right;
+    cursor: pointer;
+}
+
+/* Add media queries for responsiveness - when the screen is 500px wide or less, stack the links on top of each other */
+@media screen and (max-width: 500px) {
+    .header a {
+        float: none;
+
+    }
+    .header-right {
+        float: right;
+    }
 }
 
 .modal-img{
@@ -337,6 +402,10 @@ img:hover + .quick-shop, .quick-shop:hover{
     padding-right: 10px;
 }
 
+.card-body{
+    text-align: center;
+}
+
 .card-container{
     /*width: 33.33%;*/
     padding: 2rem;
@@ -357,6 +426,29 @@ img:hover + .quick-shop, .quick-shop:hover{
     height: 12rem;
     width: 13rem;
 }
+
+.cart-summary-item{
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    border-bottom: 1px solid lightgrey;
+    padding: 1rem;
+    color: grey;
+    font-family: 'Ovo', Georgia, serif;;
+}
+
+.cart-details-container{
+    width: 40%;
+    display: flex;
+    align-items: center;
+}
+
+
+
+
+
+
+
 
 .icons{
     display: inline-block;
@@ -380,6 +472,10 @@ img:hover + .quick-shop, .quick-shop:hover{
     font-family: "Apple Chancery";
     margin-top:1rem;
     display: inline-block;
+}
+
+.point{
+    cursor: pointer;
 }
 
 .code-input{
@@ -413,6 +509,8 @@ img:hover + .quick-shop, .quick-shop:hover{
 
 }
 
+
+
 @media screen and (max-width: 600px) {
     .pink-stripe {
         font-size: 2.4vw;
@@ -425,19 +523,89 @@ img:hover + .quick-shop, .quick-shop:hover{
     }
 }
 
-
-
-.cart-details{
-    display: inline-block;
+.full-cart-summary{
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
 }
 
-.cart-img{
-    display: inline-block;
+.cart-summary-item:first-child {
+    border-top: 1px solid lightgrey;
 }
 
-.cart-item{
-    border: 1px solid black;
+.cart-small-img{
+    width: 100%;
+    height: auto;
 }
+
+@media screen and (max-width: 425px){
+    .cart-summary-item {
+    font-size: .9rem;
+}
+}
+
+@media screen and (max-width: 625px){
+    .cart-summary-item {
+        padding: 1rem .25rem;
+    }
+
+}
+
+
+@media screen and (max-width: 625px){
+    .cart-details-container {
+        display: block
+    }
+}
+
+@media screen and (max-width: 425px){
+    .cart-details-container {
+        width: 30%;
+    }
+}
+
+
+@media screen and (max-width: 625px){
+    .full-cart-summary {
+        padding: 0 1rem;
+    }
+}
+
+
+.cart-item-image{
+    max-width: 100px;
+    margin-right: 1rem;
+}
+
+.cart-item-remove{
+    font-size: .9rem;
+    text-decoration: underline;
+    cursor: pointer;
+    margin: 1rem 0;
+    color: #EEB4C7;
+}
+
+.cart-empty{
+    text-align:center;
+    font-family: 'Ovo', Georgia, serif;
+}
+
+.cart-item-price{
+    text-align: right;
+    width: 20%;
+}
+
+.cart-item-quantity {
+    width: 30%;
+    text-align: center;
+}
+
+.cart-item-total {
+    text-align: right;
+    width: 10%;
+}
+
+
 
 .details{
     display: inline-block;
