@@ -18,7 +18,7 @@ export default class App extends React.Component {
       bestSellers: [],
       show: true,
       quantity: 1,
-      buttonText:"Add to cart"
+      buttonText: 'Add to cart'
     };
     this.productDetailItemId = null;
     this.setView = this.setView.bind(this);
@@ -26,7 +26,6 @@ export default class App extends React.Component {
     this.placeOrder = this.placeOrder.bind(this);
     this.deleteFromCart = this.deleteFromCart.bind(this);
   }
-
 
   getAllProducts() {
     fetch('/api/products.php', {
@@ -85,7 +84,6 @@ export default class App extends React.Component {
       this.setState({ cart: products, cartItemCount: itemCount });
     }
 
-
   }
 
   deleteFromCart(product) {
@@ -123,7 +121,7 @@ export default class App extends React.Component {
   componentDidMount() {
     this.getAllProducts();
     this.getCartItems();
-    this.setState({buttonText:"Add to cart"});
+    this.setState({ buttonText: 'Add to cart' });
   }
 
   render() {

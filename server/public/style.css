@@ -7,14 +7,11 @@
     display:inline-block;
 }
 
-.full-details{
-    display: block;
-    margin-left: 6.7rem;
-    margin-top: 23.5rem;
-    font-size: 1.3rem;
-    color: grey;
-}
 
+.input-style{
+    width: 48%;
+    display: inline-block;
+}
 .logo{
     max-height: 6vmax;
     cursor: pointer;
@@ -24,12 +21,15 @@
     display: inline-block;
      }
 
-/*.cart-icon{*/
-    /*display: inline-block;*/
-    /*position: absolute;*/
-    /*top: 30%;*/
-    /*transform: translateY(-40%);*/
-/*}*/
+.checkout-container{
+    width:100%;
+    font-family: 'Ovo', Georgia, serif;
+}
+
+.order-summary-checkout{
+    height:100vh;
+    background-color: rgba(239, 240, 241, .5);
+}
 @media only screen and (max-width:940px){
     .details-text {
         font-size:1.3rem;
@@ -287,7 +287,6 @@ img:hover + .quick-shop, .quick-shop:hover{
 }
 
 .shop-font{
-    font-family: 'Dosis', Helvetica, Arial, sans-serif;
     text-transform: uppercase;
 }
 
@@ -304,6 +303,17 @@ img:hover + .quick-shop, .quick-shop:hover{
 
 }
 
+.big-bag{
+    font-size: 40vh;
+    display:block;
+    color: rgba(226, 148, 171, 0.3)
+}
+
+.empty-style{
+    font-size: 5vh;
+    color: grey;
+}
+
 .right-cart{
     float: right
 }
@@ -311,6 +321,15 @@ img:hover + .quick-shop, .quick-shop:hover{
 .subtotal-cart{
     font-family: 'Ovo', Georgia, serif;
     font-size: 2vh;
+    color: grey
+}
+
+.summary-img{
+    height: 8rem;
+}
+
+label{
+    font-size: 1.4rem;
 }
 
 /* Style the logo link (notice that we set the same value of line-height and font-size to prevent the header to increase when the font gets bigger */
@@ -318,6 +337,12 @@ img:hover + .quick-shop, .quick-shop:hover{
     font-size: 25px;
     font-weight: bold;
 
+}
+
+.checkout-logo{
+    font-size: 25px;
+    font-weight: bold;
+    color: #E294AB;
 }
 
 /* Change the background color on mouse-over */

@@ -1,5 +1,4 @@
 import React from 'react';
-import Header from './header'
 
 export default class CheckoutForm extends React.Component {
   constructor(props) {
@@ -64,28 +63,31 @@ export default class CheckoutForm extends React.Component {
     return (
       <div>
         <div className ={'pink-stripe'}></div>
-        <Header cartItemCount ={this.props.cartItemCount} onClick ={this.props.onClick}></Header>
 
+        <div className ={'checkout-container'}>
 
-        <div className ={'container'}>
           <div className ={'col-md-7 order-form form-group '}>
-            <label > Contact information</label>
+            <div onClick ={() => this.props.onClick('main-page', {})} className = "checkout-logo point  mt-2">jeweliqo</div>
+            <label className ="mt-3"> Contact information</label>
             <input className={'form-control'} type="email" placeholder={'Email'}/>
             <label > Shipping information</label>
-            <input className ={'mb-2 form-control '} type="text" placeholder={'First name'}/>
-            <input className ={'mb-2 form-control'} type="text" placeholder={'Last name'}/>
-            <textarea className={'form-control'} type="text" placeholder={'Shipping Address'}/>
+            <input className ={'mb-2  form-control input-style '} type="text" placeholder={'First name'}/>
+            <input className ={'mb-2 ml-2 form-control input-style'} type="text" placeholder={'Last name'}/>
+            <input className={' mb-2 form-control'} type="text" placeholder={'Address'}/>
+            <input className={' mb-2 form-control'} type="text" placeholder={'City'}/>
+            <input className={' mb-2 form-control'} type="text" placeholder={'Country/Region'}/>
+            <input className={' mb-2 form-control'} type="text" placeholder={'State'}/>
+            <input className={' mb-2 form-control'} type="text" placeholder={'ZIP Code'}/>
             <label > Payment information</label>
             <input className ={'mb-2 form-control'} type="text" placeholder={'Credit Card Number'}/>
 
+            <div onClick ={() => this.props.onClick('cart', {})} className={'mb-2 point'}><i className = "fas fa-chevron-left"></i> Return to cart</div>
             <div>DISCLAIMER: FOR DEMONSTRATION PURPOSES ONLY. PLEASE DO NOT USE REAL INFORMATION.</div>
-
-            <button onClick ={() => this.props.click('catalog', {})} className = {'btn btn-link btn-back-details'}>Back to Catalog</button>
-            <button onClick ={() => this.props.click('cart', {})} className = {'btn btn-link btn-back-details'}>Return to Cart</button>
           </div>
-          <div className ={'col-md-4 order-summary '}>
-            <label > Order Summary</label>
-            {this.props.cart.map(product => (<div key={this.props.cart.id} className={'summary-items'}>{product.name}  ${(product.price * 0.01).toFixed(2)}</div>))}
+          <div className ={'col-md-5 order-summary order-summary-checkout '}>
+            <label className ="mt-5"> </label>
+            {this.props.cart.map(product => (<div key={this.props.cart.id} className={'summary-items mt-1'}><img className ="summary-img mr-1" src={product.image}
+              alt=""/>{product.name} ({product.quantity})  ${(product.price * 0.01).toFixed(2)}</div>))}
 
             <div className ={'mb-2 mt-2'}>
               <input onChange={this.handleChange} className ={'mb-2 form-control mr-2 code-input'} placeholder={'Discount code'}type="text"/>

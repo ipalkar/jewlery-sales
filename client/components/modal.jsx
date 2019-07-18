@@ -36,7 +36,7 @@ export default class Modal extends React.Component {
           <div className="">
             <img className ="modal-img ml-4" src={this.props.image} />
             <div className ="modal-details ml-3">
-              <div>{this.props.name}</div>
+              <div className = {'point'} onClick = {() => this.props.showFullDetails('details', {}, this.props.id)}>{this.props.name}</div>
               <div className ="mb-2">${(this.props.price * 0.01).toFixed(2) }</div>
 
               <label className ="qty-label qty-font mr-2" htmlFor="quantity">Qty: </label>
@@ -54,7 +54,7 @@ export default class Modal extends React.Component {
               </select>
 
               <button onClick ={() => this.props.addToCart(this.state.product)} className ="btn btn-cart">Add to Cart</button>
-              <button onClick = {() => this.props.showFullDetails('details', {}, this.props.id)} className = "btn btn-link full-details">View Full Details</button>
+
             </div>
 
           </div>
