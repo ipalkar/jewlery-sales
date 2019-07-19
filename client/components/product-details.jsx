@@ -5,15 +5,29 @@ export default class ProductDetails extends React.Component {
     super(props);
     this.state = {
       product: null,
-      isLoaded: false
+      isLoaded: false,
+      buttonText: 'Add to bag'
     };
     this.handleChange = this.handleChange.bind(this);
+    this.buttonChange = this.buttonChange.bind(this);
+
   }
 
   handleChange(event) {
     let product = this.state.product;
     product.quantity = event.target.value;
     this.setState({ product: product });
+  }
+
+  buttonChange(event) {
+    event.target.disabled = true;
+    this.setState({ buttonText: 'Added!' });
+
+    setTimeout(() => {
+      this.setState({ buttonText: 'Add to bag' });
+      event.target.disabled = false;
+    }, 1000);
+
   }
 
   componentDidMount() {
@@ -60,7 +74,11 @@ export default class ProductDetails extends React.Component {
                     </select>
                   </div>
 
-                  <button onClick ={() => this.props.addToCart(this.state.product)} className ={'btn btn-cart'}>{this.props.buttonText}</button>
+                  <button onClick={() => {
+                    this.props.addToCart(this.state.product);
+                    this.buttonChange(event);
+                  }
+                  } className ={'btn btn-cart'}>{this.state.buttonText}</button>
 
                 </div>
               </div>

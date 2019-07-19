@@ -17,14 +17,15 @@ export default class App extends React.Component {
       cartItemCount: 0,
       bestSellers: [],
       show: true,
-      quantity: 1,
-      buttonText: 'Add to cart'
+      quantity: 1
+
     };
     this.productDetailItemId = null;
     this.setView = this.setView.bind(this);
     this.addToCart = this.addToCart.bind(this);
     this.placeOrder = this.placeOrder.bind(this);
     this.deleteFromCart = this.deleteFromCart.bind(this);
+
   }
 
   getAllProducts() {
@@ -47,6 +48,7 @@ export default class App extends React.Component {
   }
 
   addToCart(product) {
+
     fetch('/api/cart.php', {
       method: 'POST',
       body: JSON.stringify(product),
@@ -82,6 +84,7 @@ export default class App extends React.Component {
       let otherItemsInCart = this.state.cart.filter(item => { return item.id !== product.id; });
       let products = otherItemsInCart.concat(itemInCart[0]);
       this.setState({ cart: products, cartItemCount: itemCount });
+
     }
 
   }
@@ -148,9 +151,9 @@ export default class App extends React.Component {
     } else if (this.state.view.name === 'checkout') {
       return <CheckoutForm cartItemCount ={this.state.cartItemCount} placeOrder ={this.placeOrder} cart = {this.state.cart} onClick ={this.setView}/>;
     } else if (this.state.view.name === 'details') {
-      return <ProductDetails buttonText ={this.state.buttonText} id = {this.productDetailItemId} cartItemCount ={this.state.cartItemCount} addToCart = {this.addToCart} onClick = {this.setView} params = {this.state.view.params} />;
+      return <ProductDetails buttonChange = {this.props.buttonChange} buttonText ={this.state.btnText} id = {this.productDetailItemId} cartItemCount ={this.state.cartItemCount} addToCart = {this.addToCart} onClick = {this.setView} params = {this.state.view.params} />;
     } else if (this.state.view.name === 'thanks') {
-      return <ThankYou onClick ={this.setView}/>;
+      return <ThankYou cartItemCount = {this.state.cartItemCount} onClick ={this.setView}/>;
     } else if (this.state.view.name === 'main-page') {
       return <MainPage addToCart ={this.addToCart} onClick = {this.setView} products = {this.state.bestSellers} cartItemCount = {this.state.cartItemCount}></MainPage>;
     }

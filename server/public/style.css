@@ -7,9 +7,17 @@
     display:inline-block;
 }
 
+.cart-chev{
+    display: inline-block;
+}
+
+.floater{
+    float: right;
+}
+
 
 .input-style{
-    width: 48%;
+    width: 49%;
     display: inline-block;
 }
 .logo{
@@ -309,8 +317,13 @@ img:hover + .quick-shop, .quick-shop:hover{
     color: rgba(226, 148, 171, 0.3)
 }
 
+.border-style{
+    border-top: 1px lightgrey solid;
+    border-bottom: 1px lightgrey solid;
+}
+
 .empty-style{
-    font-size: 5vh;
+    font-size: 4vh;
     color: grey;
 }
 
@@ -337,6 +350,11 @@ label{
     font-size: 25px;
     font-weight: bold;
 
+}
+
+.pink{
+    color: #E294AB;
+    font-size: 1.3rem;
 }
 
 .checkout-logo{
@@ -397,7 +415,7 @@ label{
     z-index: 1050;
     width: 100%;
     height: 100%;
-    background-color: rgba(239, 240, 241, .5);
+    background-color: rgba(239, 240, 241, .65);
 }
 
 .custom-modal-dialog {
@@ -445,6 +463,7 @@ label{
     height: 3rem;
     font-size: 1.2rem;
     display: inline-block;
+    font-family: 'Ovo', Georgia, serif;
 }
 
 .cart-img-height{
@@ -459,7 +478,14 @@ label{
     border-bottom: 1px solid lightgrey;
     padding: 1rem;
     color: grey;
-    font-family: 'Ovo', Georgia, serif;;
+    font-family: 'Ovo', Georgia, serif;
+}
+
+.text-style{
+    font-family: 'Ovo', Georgia, serif;
+    color:grey;
+    display: inline-block;
+
 }
 
 .cart-details-container{
@@ -607,7 +633,7 @@ label{
     text-decoration: underline;
     cursor: pointer;
     margin: 1rem 0;
-    color: #EEB4C7;
+    color: #E294AB;
 }
 
 .cart-empty{

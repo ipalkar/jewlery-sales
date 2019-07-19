@@ -3,9 +3,10 @@ import React from 'react';
 export default class Modal extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { product: null };
+    this.state = { product: null, buttonText: 'Add to bag' };
     this.handleCloseModal = this.handleCloseModal.bind(this);
     this.handleChange = this.handleChange.bind(this);
+    this.buttonChange = this.buttonChange.bind(this);
 
   }
   handleCloseModal(event) {
@@ -20,6 +21,17 @@ export default class Modal extends React.Component {
     this.setState({ product: product });
   }
 
+  buttonChange(event) {
+    event.target.disabled = true;
+    this.setState({ buttonText: 'Added!' });
+
+    setTimeout(() => {
+      this.setState({ buttonText: 'Add to bag' });
+      event.target.disabled = false;
+    }, 1000);
+
+  }
+
   componentDidMount() {
     fetch('/api/products.php?id=' + this.props.id, {
       method: 'GET'
@@ -32,7 +44,7 @@ export default class Modal extends React.Component {
     return (
       <div className="custom-modal" onClick={this.handleCloseModal} >
         <div className="custom-modal-dialog modal-fade animate-top">
-          <div className="close-icon font-weight-bold" onClick={this.props.closeModal}> ✖ </div>
+          <div className="close-icon font-weight-bold pointer" onClick={this.props.closeModal}> ✖ </div>
           <div className="">
             <img className ="modal-img ml-4" src={this.props.image} />
             <div className ="modal-details ml-3">
@@ -53,7 +65,11 @@ export default class Modal extends React.Component {
                 <option value="10">10</option>
               </select>
 
-              <button onClick ={() => this.props.addToCart(this.state.product)} className ="btn btn-cart">Add to Cart</button>
+              <button onClick={() => {
+                this.props.addToCart(this.state.product);
+                this.buttonChange(event);
+              }
+              } className ="btn btn-cart">{this.state.buttonText}</button>
 
             </div>
 
