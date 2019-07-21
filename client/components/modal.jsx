@@ -44,7 +44,7 @@ export default class Modal extends React.Component {
     return (
       <div className="custom-modal" onClick={this.handleCloseModal} >
         <div className="custom-modal-dialog modal-fade animate-top">
-          <div className="close-icon font-weight-bold pointer" onClick={this.props.closeModal}> ✖ </div>
+          <div className="close-icon font-weight-bold " onClick={this.props.closeModal}> ✖ </div>
           <div className="">
             <img className ="modal-img ml-4" src={this.props.image} />
             <div className ="modal-details ml-3">

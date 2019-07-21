@@ -106,13 +106,12 @@ export default class App extends React.Component {
   }
 
   placeOrder(orderInfo) {
-    orderInfo['cart'] = this.state.cart;
     fetch('api/orders.php', {
       method: 'POST',
       headers: { 'Content-type': 'application/json' }
     })
       .then(response => response.json);
-    this.setState({ cart: [], cartItemCount: 0 });
+    this.setState({ cart: [], cartItemCount: 0, history: orderInfo });
     this.setView('thanks', {});
   }
 

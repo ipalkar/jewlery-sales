@@ -443,10 +443,19 @@ label{
     display: flex;
     flex-direction: row-reverse;
     padding-right: 10px;
+    cursor: pointer;
 }
 
 .card-body{
     text-align: center;
+}
+
+.hidden-btn{
+    display:none;
+}
+
+.invalid-form{
+    color:red;
 }
 
 .card-container{
