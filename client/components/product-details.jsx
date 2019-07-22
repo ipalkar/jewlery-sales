@@ -60,7 +60,7 @@ export default class ProductDetails extends React.Component {
 
                   <div className = "qty-display" >
                     <label className ="qty-label qty-font mr-2" htmlFor="quantity">Qty: </label>
-                    <select onChange={this.handleChange} value = {this.state.quantity} className ="mr-3 qty-font" id="quantity" name="quantity">
+                    <select onChange={this.handleChange} value = {this.state.quantity} className ="mr-3 qty-font " id="quantity" name="quantity">
                       <option value="1">1</option>
                       <option value="2">2</option>
                       <option value="3">3</option>

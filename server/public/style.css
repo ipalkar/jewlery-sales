@@ -156,14 +156,7 @@ label{
 }
 
 
-.thanks{
-    font-family:"Apple Chancery";
-    font-size: 3rem;
-    margin: auto;
-    width: 50%;
-    text-align: center;
-    margin-top: 12rem;
-}
+
 
 .summary-items{
     font-size: 20px;
@@ -181,10 +174,25 @@ input,textarea{
     width: 25rem;
 }
 
+.conf-size{
+    font-size:2.5vh;
+}
+
 .order-form,.order-summary{
     display: inline-block;
     vertical-align: top;
 }
+
+.btn-conf{
+    text-align: center;
+}
+
+.order-conf{
+    color:grey;
+    font-family: 'Ovo', Georgia, serif;
+}
+
+
 
 h1{
     display: inline-block;
@@ -197,6 +205,15 @@ h1{
     margin-bottom: 1rem;
     border: 1px solid lavenderblush;
     display: inline-block;
+}
+
+.ship-conf{
+    display:inline-block;
+}
+
+.payment-conf{
+    display:inline-block;
+    float:right;
 }
 
 h2{
@@ -448,6 +465,14 @@ label{
 
 .card-body{
     text-align: center;
+}
+
+.conf-style{
+    border-bottom: 1px solid lightgrey;
+}
+
+.gem-icon{
+    font-size: 15px;
 }
 
 .hidden-btn{

@@ -152,7 +152,7 @@ export default class App extends React.Component {
     } else if (this.state.view.name === 'details') {
       return <ProductDetails buttonChange = {this.props.buttonChange} buttonText ={this.state.btnText} id = {this.productDetailItemId} cartItemCount ={this.state.cartItemCount} addToCart = {this.addToCart} onClick = {this.setView} params = {this.state.view.params} />;
     } else if (this.state.view.name === 'thanks') {
-      return <ThankYou cartItemCount = {this.state.cartItemCount} onClick ={this.setView}/>;
+      return <ThankYou orderHistory ={this.state.history} cartItemCount = {this.state.cartItemCount} onClick ={this.setView}/>;
     } else if (this.state.view.name === 'main-page') {
       return <MainPage addToCart ={this.addToCart} onClick = {this.setView} products = {this.state.bestSellers} cartItemCount = {this.state.cartItemCount}></MainPage>;
     }

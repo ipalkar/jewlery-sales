@@ -32,7 +32,10 @@ export default class CheckoutForm extends React.Component {
         ccExpirationState: '',
         cvvState: '',
         zipState: '',
-        nameOnCardState: ''
+        nameOnCardState: '',
+        cityState: '',
+        stateState: '',
+        countryState: ''
       },
       errorCode: ''
 
@@ -58,6 +61,12 @@ export default class CheckoutForm extends React.Component {
     this.onChangeName = this.onChangeName.bind(this);
     this.validateNameOnCard = this.validateNameOnCard.bind(this);
     this.onChangeNameOnCard = this.onChangeNameOnCard.bind(this);
+    this.validateCountry = this.validateCountry.bind(this);
+    this.onChangeCountry = this.onChangeCountry.bind(this);
+    this.onChangeCity = this.onChangeCity.bind(this);
+    this.validateCity = this.validateCity.bind(this);
+    this.validateState = this.validateState.bind(this);
+    this.onChangeState = this.onChangeState.bind(this);
 
   }
 
@@ -152,6 +161,56 @@ export default class CheckoutForm extends React.Component {
     this.validateNameOnCard(e);
   }
 
+  validateCountry(e) {
+    const nameRegex = /[A-Za-z0-9]/;
+    const { validate } = this.state;
+    if (nameRegex.test(e.target.value)) {
+      validate.countryState = 'has-success';
+    } else {
+      validate.countryState = 'has-danger';
+    }
+    this.setState({ validate });
+  }
+
+  onChangeCountry(e) {
+    this.handleInputChange(e);
+    this.validateCountry(e);
+
+  }
+
+  validateState(e) {
+    const nameRegex = /[A-Za-z0-9]/;
+    const { validate } = this.state;
+    if (nameRegex.test(e.target.value)) {
+      validate.stateState = 'has-success';
+    } else {
+      validate.stateState = 'has-danger';
+    }
+    this.setState({ validate });
+  }
+
+  onChangeState(e) {
+    this.handleInputChange(e);
+    this.validateState(e);
+
+  }
+
+  validateCity(e) {
+    const nameRegex = /[A-Za-z0-9]/;
+    const { validate } = this.state;
+    if (nameRegex.test(e.target.value)) {
+      validate.cityState = 'has-success';
+    } else {
+      validate.cityState = 'has-danger';
+    }
+    this.setState({ validate });
+  }
+  onChangeCity(e) {
+    this.handleInputChange(e);
+    this.validateCity(e);
+
+  }
+
   validateName(e) {
     const nameRegex = /[A-Za-z0-9]/;
     const { validate } = this.state;
@@ -196,12 +255,12 @@ export default class CheckoutForm extends React.Component {
       return (accumulator + (parseInt(currentValue.price) * 0.01));
     }, 0);
     let formattedSubtotal = subtotal.toFixed(2);
-    this.setState({ subtotal: formattedSubtotal });
+    this.setState({ subtotal: formattedSubtotal, total: formattedSubtotal });
     return this.state.subtotal;
   }
 
   handleChange(event) {
-    this.setState({ code: event.target.value, errorMessages: { code: '' } });
+    this.setState({ code: event.target.value, errorCode: '' });
 
   }
 
@@ -223,7 +282,25 @@ export default class CheckoutForm extends React.Component {
       discountVal = 'Discount: - $' + this.state.discount;
       totalVal = 'Discounted total: $' + this.state.total;
     }
-    const checkFormComplete = (this.state.validate.nameState && this.state.validate.addressState && this.state.validate.emailState && this.state.validate.nameOnCardState && this.state.validate.creditCardState && this.state.validate.ccExpirationState && this.state.validate.cvvState && this.state.validate.zipState) === 'has-success' ? <button type={'submit'} onClick={this.props.placeOrder} className ={'btn btn-cart floater mr-2'}>Place Order</button> : <button className ="hidden-btn"></button>;
+
+    const orderHistory = {
+      name: this.state.name,
+      address: this.state.address,
+      city: this.state.city,
+      country: this.state.country,
+      state: this.state.state,
+      zip: this.state.zip,
+      cardNum: this.state.cardNum,
+      expDate: this.state.expDate,
+      nameOnCard: this.state.nameOnCard,
+      email: this.state.email,
+      subtotal: this.state.subtotal,
+      discount: this.state.discount,
+      total: this.state.total,
+      cart: this.props.cart
+
+    };
+    let checkFormComplete = (this.state.validate.nameState && this.state.validate.addressState && this.state.validate.emailState && this.state.validate.nameOnCardState && this.state.validate.creditCardState && this.state.validate.ccExpirationState && this.state.validate.cvvState && this.state.validate.zipState && this.state.validate.stateState && this.state.validate.cityState && this.state.validate.countryState) === 'has-success' ? <button type={'submit'} onClick ={() => this.props.placeOrder(orderHistory)} className ={'btn btn-cart floater mr-2'}>Place Order</button> : <button className ="hidden-btn"></button>;
 
     return (
       <div>
@@ -252,6 +329,21 @@ export default class CheckoutForm extends React.Component {
               </InputGroup>
 
               <InputGroup>
+                <Input name="city" valid={ this.state.validate.cityState === 'has-success' } invalid={ this.state.validate.cityState === 'has-danger' } onChange={this.onChangeCity} className ="mb-2" placeholder ="City"/>
+                <FormFeedback invalid>Enter a valid street address</FormFeedback>
+              </InputGroup>
+
+              <InputGroup>
+                <Input name="state" valid={ this.state.validate.stateState === 'has-success' } invalid={ this.state.validate.stateState === 'has-danger' } onChange={this.onChangeState} className ="mb-2" placeholder ="State"/>
+                <FormFeedback invalid>Enter a valid street address</FormFeedback>
+              </InputGroup>
+
+              <InputGroup>
+                <Input name="country" valid={ this.state.validate.countryState === 'has-success' } invalid={ this.state.validate.countryState === 'has-danger' } onChange={this.onChangeCountry} className ="mb-2" placeholder ="Country/Region"/>
+                <FormFeedback invalid>Enter a valid street address</FormFeedback>
+              </InputGroup>
+
+              <InputGroup>
                 <Input className ="mb-2" name ="zip" valid ={this.state.validate.zipState === 'has-success'} invalid ={this.state.validate.zipState === 'has-danger'} onChange ={this.onChangeZIP}placeholder ="ZIP Code"/>
                 <FormFeedback invalid>Enter a valid 5 digit ZIP code</FormFeedback>
               </InputGroup>
@@ -263,7 +355,7 @@ export default class CheckoutForm extends React.Component {
               </InputGroup>
 
               <InputGroup>
-                <Input name="creditCard" valid={ this.state.validate.creditCardState === 'has-success' } invalid={ this.state.validate.creditCardState === 'has-danger' } onChange={this.onChangeCardNum} className ="mb-2"placeholder ="Card number"/>
+                <Input name="cardNum" valid={ this.state.validate.creditCardState === 'has-success' } invalid={ this.state.validate.creditCardState === 'has-danger' } onChange={this.onChangeCardNum} className ="mb-2"placeholder ="Card number"/>
                 <FormFeedback invalid>Enter a valid card number</FormFeedback>
               </InputGroup>
               <InputGroup>
