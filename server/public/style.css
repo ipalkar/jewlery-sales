@@ -170,12 +170,21 @@ label{
     height:30rem;
 }
 
+.conf-bold{
+    font-weight:bold;
+}
+
+.info-conf{
+    display: inline-block;
+    vertical-align: top;
+}
+
 input,textarea{
     width: 25rem;
 }
 
 .conf-size{
-    font-size:2.5vh;
+    font-size:2vh;
 }
 
 .checkout-nums{
