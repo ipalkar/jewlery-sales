@@ -34,7 +34,7 @@ export default class CartSummary extends React.Component {
               <div className ="cart-item-quantity">Quantity</div>
               <div className={'cart-item-total'}>Total</div>
             </div>
-            {this.props.cart.map(product => (<CartSummaryItem remove ={this.props.remove} key = {product.id } product ={product}></CartSummaryItem>))}
+            {this.props.cart.map(product => (<CartSummaryItem click = {this.props.onClick} remove ={this.props.remove} key = {product.id } product ={product}></CartSummaryItem>))}
           </div>
           <div onClick ={() => this.props.onClick('catalog', {})} className={'mt-3 point text-style'}><i className = "fas fa-chevron-left"></i> Back to Catalog</div>
           <div className = "right-cart mt-3 ">

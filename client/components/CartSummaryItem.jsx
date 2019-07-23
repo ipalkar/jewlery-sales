@@ -7,7 +7,7 @@ export default class CartSummaryItem extends React.Component {
       <div className={'cart-summary-item'}>
         <div className ={'cart-details-container'}>
           <div className ={'cart-item-image'}>
-            <img className ="cart-small-img" src={this.props.product.image} alt=""/>
+            <img onClick = {() => this.props.click('details', {}, this.props.product.id)} className ="cart-small-img point" src={this.props.product.image} alt=""/>
           </div>
           <div>
             <p>{this.props.product.name}</p>

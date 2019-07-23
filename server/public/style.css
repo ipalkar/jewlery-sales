@@ -178,6 +178,11 @@ input,textarea{
     font-size:2.5vh;
 }
 
+.checkout-nums{
+    display:inline-block;
+    float:right;
+}
+
 .order-form,.order-summary{
     display: inline-block;
     vertical-align: top;
@@ -553,6 +558,33 @@ label{
     }
 }
 
+
+
+.product-thumbnail-quantity {
+    font-size: 0.85714em;
+    font-weight: 500;
+
+    border-radius: 1.75em;
+    background-color: rgba(114,114,114,0.9);
+    color: #fff;
+    -webkit-box-sizing: border-box;
+
+    min-width: 1.75em;
+    height: 1.75em;
+    padding: 0 0.58333em;
+    position: absolute;
+
+    top: -0.75em;
+
+    left: 5rem;
+}
+
+
+
+.product-thumbnail-wrapper {
+    display: inline-block;
+    position:relative;
+}
 .main-title{
     font-family: "Apple Chancery";
     margin-top:1rem;
@@ -615,6 +647,10 @@ label{
 }
 
 .cart-summary-item:first-child {
+    border-top: 1px solid lightgrey;
+}
+
+.total-checkout{
     border-top: 1px solid lightgrey;
 }
 
