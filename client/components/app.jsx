@@ -73,18 +73,26 @@ export default class App extends React.Component {
       let itemCount = this.state.cartItemCount + parseInt(product.quantity);
       this.setState({ cart: allProducts, cartItemCount: itemCount });
     } else {
+      let otherItemsInCart = this.state.cart.filter(item => { return item.id !== productId; });
       let itemInCart = this.state.cart.filter(item => { return item.id === productId; });
+      let itemToAdd = product;
+      const oldQuantity = parseInt(itemInCart[0].quantity);
 
-      let originalPrice = parseInt(itemInCart[0].price) / parseInt(itemInCart[0].quantity);
-      let newQuantity = parseInt(itemInCart[0].quantity) + parseInt(product.quantity);
-      let newPrice = originalPrice * newQuantity;
-      itemInCart[0].price = newPrice;
-      itemInCart[0].quantity = newQuantity;
-      let itemCount = this.state.cartItemCount + parseInt(product.quantity);
-      let otherItemsInCart = this.state.cart.filter(item => { return item.id !== product.id; });
-      let products = otherItemsInCart.concat(itemInCart[0]);
-      this.setState({ cart: products, cartItemCount: itemCount });
+      if (!('quantity' in itemToAdd)) {
+        itemToAdd.quantity = 1;
+      }
+      itemToAdd.quantity = parseInt(itemToAdd.quantity) + oldQuantity;
+      itemToAdd.price = itemToAdd.quantity * itemToAdd.price;
+      let allCartItems = otherItemsInCart.concat(itemToAdd);
 
+      if (this.state.cart.length === 1) {
+        let itemCount = itemToAdd.quantity;
+        this.setState({ cart: allCartItems, cartItemCount: itemCount });
+      } else {
+        let itemsCountOld = this.state.cartItemCount;
+        let itemCount = itemsCountOld + parseInt(itemToAdd.quantity) - oldQuantity;
+        this.setState({ cart: allCartItems, cartItemCount: itemCount });
+      }
     }
 
   }
