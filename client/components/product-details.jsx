@@ -6,7 +6,8 @@ export default class ProductDetails extends React.Component {
     this.state = {
       product: null,
       isLoaded: false,
-      buttonText: 'Add to bag'
+      buttonText: 'Add to bag',
+      quantity: null
     };
     this.handleChange = this.handleChange.bind(this);
     this.buttonChange = this.buttonChange.bind(this);
@@ -14,9 +15,7 @@ export default class ProductDetails extends React.Component {
   }
 
   handleChange(event) {
-    let product = this.state.product;
-    product.quantity = event.target.value;
-    this.setState({ product: product });
+    this.setState({ quantity: event.target.value });
   }
 
   buttonChange(event) {
@@ -75,7 +74,7 @@ export default class ProductDetails extends React.Component {
                   </div>
 
                   <button onClick={() => {
-                    this.props.addToCart(this.state.product);
+                    this.props.addToCart(this.state.product, this.state.quantity);
                     this.buttonChange(event);
                   }
                   } className ={'btn btn-cart'}>{this.state.buttonText}</button>

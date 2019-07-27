@@ -3,7 +3,7 @@ import React from 'react';
 export default class Modal extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { product: null, buttonText: 'Add to bag' };
+    this.state = { product: null, buttonText: 'Add to bag', quantity: null };
     this.handleCloseModal = this.handleCloseModal.bind(this);
     this.handleChange = this.handleChange.bind(this);
     this.buttonChange = this.buttonChange.bind(this);
@@ -16,9 +16,7 @@ export default class Modal extends React.Component {
   }
 
   handleChange(event) {
-    let product = this.state.product;
-    product.quantity = event.target.value;
-    this.setState({ product: product });
+    this.setState({ quantity: event.target.value });
   }
 
   buttonChange(event) {
@@ -46,6 +44,7 @@ export default class Modal extends React.Component {
         <div className="custom-modal-dialog modal-fade animate-top">
           <div className="close-icon font-weight-bold " onClick={this.props.closeModal}> ✖ </div>
           <div className="">
+
             <img className ="modal-img ml-4" src={this.props.image} />
             <div className ="modal-details ml-3">
               <div className = {'point'} onClick = {() => this.props.showFullDetails('details', {}, this.props.id)}>{this.props.name}</div>
@@ -66,7 +65,7 @@ export default class Modal extends React.Component {
               </select>
 
               <button onClick={() => {
-                this.props.addToCart(this.state.product);
+                this.props.addToCart(this.state.product, this.state.quantity);
                 this.buttonChange(event);
               }
               } className ="btn btn-cart">{this.state.buttonText}</button>

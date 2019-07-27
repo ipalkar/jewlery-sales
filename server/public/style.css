@@ -272,6 +272,7 @@ img{
 }
 .card{
     height: 27rem;
+    border: none;
 }
 
 .img-container{
@@ -424,7 +425,7 @@ label{
 }
 
 .modal-img{
-    width:50%;
+    /*width:50%;*/
     height: 55vh;
     display: inline-block;
 }
@@ -432,7 +433,7 @@ label{
 .modal-details{
     display: inline-block;
     vertical-align:top;
-    font-size: 3vh;
+    font-size: 2.33vh;
     color: #444444;
 }
 
@@ -451,7 +452,7 @@ label{
 
 .custom-modal-dialog {
     height: 60%;
-    width: 60%;
+    width: 50%;
     background-color: white;
     position: relative;
     border-radius: 6px;
@@ -619,7 +620,8 @@ label{
 
 
 .card-img-top{
-    height:438px;
+    height:auto;
+    width:100%;
 }
 
 

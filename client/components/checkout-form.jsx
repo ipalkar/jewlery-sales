@@ -335,7 +335,7 @@ export default class CheckoutForm extends React.Component {
               </InputGroup>
               <Label>Shipping Information</Label>
               <InputGroup>
-                <Input name="name" valid={ this.state.validate.nameState === 'has-success' } invalid={ this.state.validate.nameState === 'has-danger' } onChange={this.onChangeName}className =" mr-1 mb-2"placeholder ="Name"/>
+                <Input name="name" valid={ this.state.validate.nameState === 'has-success' } invalid={ this.state.validate.nameState === 'has-danger' } onChange={this.onChangeName}className =" mb-2"placeholder ="Name"/>
                 <FormFeedback className={'mb-2'} invalid>Enter a name</FormFeedback>
               </InputGroup>
 
@@ -375,7 +375,7 @@ export default class CheckoutForm extends React.Component {
                 <FormFeedback className={'mb-2'} invalid>Enter a valid 16 digit card number</FormFeedback>
               </InputGroup>
               <InputGroup>
-                <Input name="expDate" valid={ this.state.validate.ccExpirationState === 'has-success' } invalid={ this.state.validate.ccExpirationState === 'has-danger' } onChange={this.onChangeExpiration} className =" mr-1 mb-2" placeholder ="Expiration Date (MM/YY)"/>
+                <Input name="expDate" valid={ this.state.validate.ccExpirationState === 'has-success' } invalid={ this.state.validate.ccExpirationState === 'has-danger' } onChange={this.onChangeExpiration} className =" mb-2" placeholder ="Expiration Date (MM/YY)"/>
                 <FormFeedback className={'mb-2'} invalid>Enter a valid date in MM/YY format</FormFeedback>
               </InputGroup>
 

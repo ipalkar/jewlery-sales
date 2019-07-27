@@ -47,7 +47,7 @@ export default class App extends React.Component {
       .then(cartItems => this.setState({ cart: cartItems }));
   }
 
-  addToCart(product) {
+  addToCart(product, quantity) {
 
     fetch('/api/cart.php', {
       method: 'POST',
@@ -65,9 +65,10 @@ export default class App extends React.Component {
 
     if (itemInCart.length === 0) {
       let itemToAdd = product;
-      if (!('quantity' in itemToAdd)) {
-        itemToAdd.quantity = 1;
+      if (quantity === null) {
+        quantity = 1;
       }
+      itemToAdd.quantity = quantity;
       itemToAdd.price = itemToAdd.quantity * itemToAdd.price;
       let allProducts = this.state.cart.concat(itemToAdd);
       let itemCount = this.state.cartItemCount + parseInt(product.quantity);
@@ -75,16 +76,16 @@ export default class App extends React.Component {
     } else {
       let otherItemsInCart = this.state.cart.filter(item => { return item.id !== productId; });
       let itemInCart = this.state.cart.filter(item => { return item.id === productId; });
-      let itemToAdd = product;
       const oldQuantity = parseInt(itemInCart[0].quantity);
 
-      if (!('quantity' in itemToAdd)) {
-        itemToAdd.quantity = 1;
-      }
-      itemToAdd.quantity = parseInt(itemToAdd.quantity) + oldQuantity;
-      itemToAdd.price = itemToAdd.quantity * itemToAdd.price;
-      let allCartItems = otherItemsInCart.concat(itemToAdd);
+      let itemToAdd = product;
+      itemToAdd.quantity = parseInt(quantity) + parseInt(oldQuantity);
 
+      let originalPrice = parseInt(product.price) / parseInt(oldQuantity);
+
+      itemToAdd.price = itemToAdd.quantity * originalPrice;
+
+      let allCartItems = otherItemsInCart.concat(itemToAdd);
       if (this.state.cart.length === 1) {
         let itemCount = itemToAdd.quantity;
         this.setState({ cart: allCartItems, cartItemCount: itemCount });
