@@ -77,8 +77,10 @@ export default class App extends React.Component {
       let otherItemsInCart = this.state.cart.filter(item => { return item.id !== productId; });
       let itemInCart = this.state.cart.filter(item => { return item.id === productId; });
       const oldQuantity = parseInt(itemInCart[0].quantity);
-
       let itemToAdd = product;
+      if (quantity === null) {
+        quantity = 1;
+      }
       itemToAdd.quantity = parseInt(quantity) + parseInt(oldQuantity);
 
       let originalPrice = parseInt(product.price) / parseInt(oldQuantity);
