@@ -3,4 +3,4 @@
 .DS_Store
 node_modules/
 server/public/api/db_connection.php
-mysql_credentials.php
+server/public/api/mysql_credentials.php
