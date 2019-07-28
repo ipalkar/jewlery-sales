@@ -58,34 +58,31 @@ export default class App extends React.Component {
 
     let productId = product.id;
     let itemInCart = this.state.cart.filter(item => { return item.id === productId; });
-
     if (this.state.cart.length === 0) {
       this.setState({ cartItemCount: 0 });
     }
 
     if (itemInCart.length === 0) {
-      let itemToAdd = product;
+      let itemToAdd = Object.assign({}, product);
       if (quantity === null) {
         quantity = 1;
       }
       itemToAdd.quantity = quantity;
       itemToAdd.price = itemToAdd.quantity * itemToAdd.price;
       let allProducts = this.state.cart.concat(itemToAdd);
-      let itemCount = this.state.cartItemCount + parseInt(product.quantity);
+      let itemCount = this.state.cartItemCount + parseInt(quantity);
       this.setState({ cart: allProducts, cartItemCount: itemCount });
     } else {
       let otherItemsInCart = this.state.cart.filter(item => { return item.id !== productId; });
       let itemInCart = this.state.cart.filter(item => { return item.id === productId; });
       const oldQuantity = parseInt(itemInCart[0].quantity);
-      let itemToAdd = product;
+      let itemToAdd = Object.assign({}, product);
       if (quantity === null) {
         quantity = 1;
       }
       itemToAdd.quantity = parseInt(quantity) + parseInt(oldQuantity);
 
-      let originalPrice = parseInt(product.price) / parseInt(oldQuantity);
-
-      itemToAdd.price = itemToAdd.quantity * originalPrice;
+      itemToAdd.price = itemToAdd.quantity * product.price;
 
       let allCartItems = otherItemsInCart.concat(itemToAdd);
       if (this.state.cart.length === 1) {

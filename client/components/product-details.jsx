@@ -16,6 +16,7 @@ export default class ProductDetails extends React.Component {
 
   handleChange(event) {
     this.setState({ quantity: event.target.value });
+
   }
 
   buttonChange(event) {
