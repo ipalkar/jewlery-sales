@@ -3,6 +3,7 @@ import {
   FormGroup, Label, Input,
   FormFeedback, InputGroup
 } from 'reactstrap';
+import { Link } from 'react-router-dom';
 
 export default class CheckoutForm extends React.Component {
   constructor(props) {
@@ -316,7 +317,7 @@ export default class CheckoutForm extends React.Component {
 
     };
 
-    const placeOrderBtnOnFormCompletion = this.checkIfFormCompleted() ? <button type={'submit'} onClick ={() => this.props.placeOrder(orderHistory)} className ={'btn btn-cart floater mr-2'}>Place Order</button> : <div></div>;
+    const placeOrderBtnOnFormCompletion = this.checkIfFormCompleted() ? <Link to ='/thankyou'> <button type={'submit'} onClick ={() => this.props.placeOrder(orderHistory)} className ={'btn btn-cart floater mr-2'}>Place Order</button> </Link> : <div></div>;
 
     return (
       <div>
@@ -325,7 +326,9 @@ export default class CheckoutForm extends React.Component {
         <div className ={'checkout-container'}>
 
           <div className ={'col-md-7 order-form form-group '}>
-            <div onClick ={() => this.props.onClick('main-page', {})} className = "checkout-logo point  mt-2">jeweliqo</div>
+            <Link to ='/'>
+              <div className = "checkout-logo point  mt-2">jeweliqo</div>
+            </Link>
 
             <FormGroup>
               <Label>Contact information</Label>
@@ -386,8 +389,12 @@ export default class CheckoutForm extends React.Component {
 
             </FormGroup>
 
-            <div onClick ={() => this.props.onClick('cart', {})} className={'mb-2 point cart-chev'}><i className = "fas fa-chevron-left mt-4"></i> Return to cart</div>
+            <Link to ='/cart-summary'>
+              <div onClick ={() => this.props.onClick('cart', {})} className={'mb-2 point cart-chev'}><i className = "fas fa-chevron-left mt-4"></i> Return to cart</div>
+            </Link>
+
             {placeOrderBtnOnFormCompletion}
+
             <div className ="mt-4">REMINDER: THIS IS NOT A REAL ORDER. PLEASE DO NOT USE REAL INFORMATION.</div>
           </div>
           <div className ={'col-md-5 order-summary order-summary-checkout '}>

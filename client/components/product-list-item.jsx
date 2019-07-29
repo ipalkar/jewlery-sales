@@ -1,5 +1,6 @@
 import React from 'react';
 import Modal from './modal';
+import { Link } from 'react-router-dom';
 
 export default class ProductListItem extends React.Component {
   constructor(props) {
@@ -13,14 +14,22 @@ export default class ProductListItem extends React.Component {
     this.setState({ show: !this.state.show });
   }
   render() {
+    const id = this.props.products.id;
     return (
 
       <div id ={this.props.products.id} className = ' card-container col-lg-4 col-sm-6 col-xs-12'>
         <div className = 'card'>
+
           <div className = "img-container">
-            <img className = "card-img-top" onClick = {() => this.props.click('details', {}, this.props.products.id)} src={this.props.products.image} />
+
+            <Link to ={`/product/${id}`}>
+
+              <img onClick = {() => this.props.click('details', {}, this.props.products.id)} className = "card-img-top" src={this.props.products.image} />
+            </Link>
+
             <button className={'quick-shop'} onClick={() => this.toggleModal()} >Quick Shop</button>
           </div>
+
           <div className = "card-body">
             <h5 className={'list-item-heading'}>{this.props.products.name}</h5>
             <div className ={'list-item-price'}>${(this.props.products.price * 0.01).toFixed(2) }</div>
