@@ -51,7 +51,7 @@ export default class CartSummary extends React.Component {
             }, 0)}.00</div>
 
             <Link to ='/checkout'>
-              <button onClick={() => this.props.onClick('checkout', {})} className ={'btn btn-cart mt-2'}>Checkout</button>
+              <button className ={'btn btn-cart mt-2'}>Checkout</button>
             </Link>
 
           </div>

@@ -144,7 +144,7 @@ export default class App extends React.Component {
         } />
 
         <Route path="/cart-summary" render={props =>
-          <CartSummary cartItemCount ={this.state.cartItemCount} cart = {this.state.cart} remove ={this.deleteFromCart}/>
+          <CartSummary onClick = {this.setView} cartItemCount ={this.state.cartItemCount} cart = {this.state.cart} remove ={this.deleteFromCart}/>
         } />
         <Route path="/catalog" render={props =>
           <div>

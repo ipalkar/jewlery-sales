@@ -398,10 +398,15 @@ label{
     color: #E294AB;
 }
 
+.checkout-logo a:hover{
+    background-color: #fff7fd;
+}
+
+
 /* Change the background color on mouse-over */
 .header a:hover {
     background-color: #fff7fd;
-    color: black;
+
 }
 
 /* Style the active/current link*/

@@ -1,13 +1,17 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 export default class CartSummaryItem extends React.Component {
   render() {
+    const id = this.props.product.id;
 
     return (
       <div className={'cart-summary-item'}>
         <div className ={'cart-details-container'}>
           <div className ={'cart-item-image'}>
-            <img onClick = {() => this.props.click('details', {}, this.props.product.id)} className ="cart-small-img point" src={this.props.product.image} alt=""/>
+            <Link to ={`/product/${id}`}>
+              <img onClick = {() => this.props.click('details', {}, this.props.product.id)} className ="cart-small-img point" src={this.props.product.image} alt=""/>
+            </Link>
           </div>
           <div>
             <p>{this.props.product.name}</p>

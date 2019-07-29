@@ -50,7 +50,7 @@ export default class ProductDetails extends React.Component {
             <div className={' mt-3 mb-3 '}>
               <div className={'col-sm-12 col-lg-6 col-xs-6 details'}>
                 <Link to ='/catalog'>
-                  <div onClick ={() => this.props.onClick('catalog', {})} className={'mb-2 point'}><i className = "fas fa-chevron-left"></i> Back to Catalog</div>
+                  <div onClick ={() => this.props.onClick('catalog', {})} className={'mb-2 point text-style'}><i className = "fas fa-chevron-left"></i> Back to Catalog</div>
                 </Link>
                 <img className ="details-img mb-2"src={this.state.product.image} />
               </div>

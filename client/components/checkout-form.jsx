@@ -326,8 +326,9 @@ export default class CheckoutForm extends React.Component {
         <div className ={'checkout-container'}>
 
           <div className ={'col-md-7 order-form form-group '}>
-            <Link to ='/'>
-              <div className = "checkout-logo point  mt-2">jeweliqo</div>
+
+            <Link className = "checkout-logo point   mt-2" to ='/'>
+              <span >jeweliqo</span>
             </Link>
 
             <FormGroup>
@@ -390,7 +391,7 @@ export default class CheckoutForm extends React.Component {
             </FormGroup>
 
             <Link to ='/cart-summary'>
-              <div onClick ={() => this.props.onClick('cart', {})} className={'mb-2 point cart-chev'}><i className = "fas fa-chevron-left mt-4"></i> Return to cart</div>
+              <div onClick ={() => this.props.onClick('cart', {})} className={'mb-2 point cart-chev text-style'}><i className = "fas fa-chevron-left mt-4"></i> Return to cart</div>
             </Link>
 
             {placeOrderBtnOnFormCompletion}
