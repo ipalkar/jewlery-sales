@@ -6,7 +6,7 @@ import CartSummary from './cartSummary';
 import CheckoutForm from './checkout-form';
 import ThankYou from './thank-you';
 import MainPage from './main-page';
-import { BrowserRouter, Route } from 'react-router-dom';
+import { HashRouter, Route } from 'react-router-dom';
 
 export default class App extends React.Component {
   constructor(props) {
@@ -26,6 +26,7 @@ export default class App extends React.Component {
     this.addToCart = this.addToCart.bind(this);
     this.placeOrder = this.placeOrder.bind(this);
     this.deleteFromCart = this.deleteFromCart.bind(this);
+    this.getProductDetailId = this.getProductDetailId.bind(this);
 
   }
 
@@ -126,6 +127,10 @@ export default class App extends React.Component {
 
   setView(name, params, id) {
     this.setState({ view: { name: name, params: params } });
+    // this.productDetailItemId = id;
+  }
+
+  getProductDetailId(id) {
     this.productDetailItemId = id;
   }
 
@@ -137,10 +142,10 @@ export default class App extends React.Component {
 
   render() {
     return (
-      <BrowserRouter>
+      <HashRouter>
 
         <Route exact path="/" render={props =>
-          <MainPage addToCart ={this.addToCart} onClick = {this.setView} products = {this.state.bestSellers} cartItemCount = {this.state.cartItemCount}></MainPage>
+          <MainPage addToCart ={this.addToCart} onClick = {this.getProductDetailId} products = {this.state.bestSellers} cartItemCount = {this.state.cartItemCount}></MainPage>
         } />
 
         <Route path="/cart-summary" render={props =>
@@ -150,14 +155,14 @@ export default class App extends React.Component {
           <div>
             <div className ={'pink-stripe'}>40% OFF YOUR ENTIRE ORDER WITH CODE PARTY40 AT CHECKOUT</div>
             <div>
-              <Header onClick={this.setView} cartItemCount ={this.state.cartItemCount}></Header>
+              <Header cartItemCount ={this.state.cartItemCount}></Header>
             </div>
             <div className = 'container'>
 
               <div className = "d-flex justify-content-around">
                 <div className = 'row '>
 
-                  <ProductList addToCart ={this.addToCart} onClick = {this.setView} products = {this.state.products}></ProductList>
+                  <ProductList addToCart ={this.addToCart} onClick = {this.getProductDetailId} products = {this.state.products}></ProductList>
                 </div>
               </div>
             </div>
@@ -175,7 +180,7 @@ export default class App extends React.Component {
           <ThankYou orderHistory ={this.state.history} cartItemCount = {this.state.cartItemCount} />
         } />
 
-      </BrowserRouter>
+      </HashRouter>
     );
   }
 }

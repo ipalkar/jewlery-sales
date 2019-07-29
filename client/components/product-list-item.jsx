@@ -24,7 +24,7 @@ export default class ProductListItem extends React.Component {
 
             <Link to ={`/product/${id}`}>
 
-              <img onClick = {() => this.props.click('details', {}, this.props.products.id)} className = "card-img-top" src={this.props.products.image} />
+              <img onClick = {() => this.props.click(this.props.products.id)} className = "card-img-top" src={this.props.products.image} />
             </Link>
 
             <button className={'quick-shop'} onClick={() => this.toggleModal()} >Quick Shop</button>

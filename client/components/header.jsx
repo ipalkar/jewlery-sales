@@ -7,17 +7,17 @@ export default class Header extends React.Component {
 
       <div className="header">
         <Link className="logo" to = '/'>
-          <span onClick = {() => this.props.onClick('main-page', {})} >jeweliqo</span>
+          <span >jeweliqo</span>
         </Link>
 
         <div className="header-right">
 
           <Link to ="/catalog">
-            <span className ="shop-font" onClick = {() => this.props.onClick('catalog', {})}><i className="fas fa-gem gem-icon"></i> Shop</span>
+            <span className ="shop-font" ><i className="fas fa-gem gem-icon"></i> Shop</span>
           </Link>
 
           <Link to = "/cart-summary">
-            <span className ="shop-font" ><i onClick = {() => this.props.onClick('cart', {})} className="fas fa-shopping-bag mr-2 bag-font "></i >{this.props.cartItemCount}</span>
+            <span className ="shop-font" ><i className="fas fa-shopping-bag mr-2 bag-font "></i >{this.props.cartItemCount}</span>
           </Link>
 
         </div>
