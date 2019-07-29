@@ -1,5 +1,6 @@
 import React from 'react';
 import Header from './header';
+import { Link } from 'react-router-dom';
 
 export default class ThankYou extends React.Component {
 
@@ -58,9 +59,11 @@ export default class ThankYou extends React.Component {
 
           </div>
 
-          <div className ="empty-style mt-2 btn-conf">
-            <button onClick={() => this.props.onClick('catalog', {})} className ="btn btn-link pink">Click here to continue shopping</button>
-          </div>
+          <Link to ='/catalog'>
+            <div className ="empty-style mt-2 btn-conf">
+              <button onClick={() => this.props.onClick('catalog', {})} className ="btn btn-link pink">Click here to continue shopping</button>
+            </div>
+          </Link>
 
         </div>
 

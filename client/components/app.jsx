@@ -6,6 +6,7 @@ import CartSummary from './cartSummary';
 import CheckoutForm from './checkout-form';
 import ThankYou from './thank-you';
 import MainPage from './main-page';
+import { BrowserRouter, Route } from 'react-router-dom';
 
 export default class App extends React.Component {
   constructor(props) {
@@ -120,7 +121,7 @@ export default class App extends React.Component {
     })
       .then(response => response.json);
     this.setState({ cart: [], cartItemCount: 0, history: orderInfo });
-    this.setView('thanks', {});
+    // this.setView('thanks', {});
   }
 
   setView(name, params, id) {
@@ -135,36 +136,46 @@ export default class App extends React.Component {
   }
 
   render() {
-    if (this.state.view.name === 'catalog') {
-      return (
-        <div>
-          <div className ={'pink-stripe'}>40% OFF YOUR ENTIRE ORDER WITH CODE PARTY40 AT CHECKOUT</div>
+    return (
+      <BrowserRouter>
+
+        <Route exact path="/" render={props =>
+          <MainPage addToCart ={this.addToCart} onClick = {this.setView} products = {this.state.bestSellers} cartItemCount = {this.state.cartItemCount}></MainPage>
+        } />
+
+        <Route path="/cart-summary" render={props =>
+          <CartSummary cartItemCount ={this.state.cartItemCount} cart = {this.state.cart} remove ={this.deleteFromCart}/>
+        } />
+        <Route path="/catalog" render={props =>
           <div>
-            <Header onClick={this.setView} cartItemCount ={this.state.cartItemCount}></Header>
-          </div>
-          <div className = 'container'>
+            <div className ={'pink-stripe'}>40% OFF YOUR ENTIRE ORDER WITH CODE PARTY40 AT CHECKOUT</div>
+            <div>
+              <Header onClick={this.setView} cartItemCount ={this.state.cartItemCount}></Header>
+            </div>
+            <div className = 'container'>
 
-            <div className = "d-flex justify-content-around">
-              <div className = 'row '>
+              <div className = "d-flex justify-content-around">
+                <div className = 'row '>
 
-                <ProductList addToCart ={this.addToCart} onClick = {this.setView} products = {this.state.products}></ProductList>
+                  <ProductList addToCart ={this.addToCart} onClick = {this.setView} products = {this.state.products}></ProductList>
+                </div>
               </div>
             </div>
           </div>
-        </div>
-      );
-    } else if (this.state.view.name === 'cart') {
-      return <CartSummary cartItemCount ={this.state.cartItemCount} onClick ={this.setView} cart = {this.state.cart} remove ={this.deleteFromCart}></CartSummary>;
-    } else if (this.state.view.name === 'checkout') {
-      return <CheckoutForm cartItemCount ={this.state.cartItemCount} placeOrder ={this.placeOrder} cart = {this.state.cart} onClick ={this.setView}/>;
-    } else if (this.state.view.name === 'details') {
-      return <ProductDetails buttonChange = {this.props.buttonChange} buttonText ={this.state.btnText} id = {this.productDetailItemId} cartItemCount ={this.state.cartItemCount} addToCart = {this.addToCart} onClick = {this.setView} params = {this.state.view.params} />;
-    } else if (this.state.view.name === 'thanks') {
-      return <ThankYou orderHistory ={this.state.history} cartItemCount = {this.state.cartItemCount} onClick ={this.setView}/>;
-    } else if (this.state.view.name === 'main-page') {
-      return <MainPage addToCart ={this.addToCart} onClick = {this.setView} products = {this.state.bestSellers} cartItemCount = {this.state.cartItemCount}></MainPage>;
-    }
+        } />
+        <Route path="/product/:productId" render={props =>
+          <ProductDetails buttonChange = {this.props.buttonChange} buttonText ={this.state.btnText} id = {this.productDetailItemId} cartItemCount ={this.state.cartItemCount} addToCart = {this.addToCart} params = {this.state.view.params} />
+        } />
 
+        <Route path="/checkout" render={props =>
+          <CheckoutForm cartItemCount ={this.state.cartItemCount} placeOrder ={this.placeOrder} cart = {this.state.cart} />
+        } />
+
+        <Route path="/thankyou" render={props =>
+          <ThankYou orderHistory ={this.state.history} cartItemCount = {this.state.cartItemCount} />
+        } />
+
+      </BrowserRouter>
+    );
   }
-
 }
