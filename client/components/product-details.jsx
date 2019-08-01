@@ -32,7 +32,8 @@ export default class ProductDetails extends React.Component {
   }
 
   componentDidMount() {
-    fetch('/api/products.php?id=' + this.props.id, {
+    let pathnameSplit = this.props.location.pathname.split('/');
+    fetch('/api/products.php?id=' + pathnameSplit[2], {
       method: 'GET'
     })
       .then(response => response.json())

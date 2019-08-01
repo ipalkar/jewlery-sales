@@ -168,8 +168,8 @@ export default class App extends React.Component {
             </div>
           </div>
         } />
-        <Route path="/product/:productId" render={props =>
-          <ProductDetails buttonChange = {this.props.buttonChange} buttonText ={this.state.btnText} id = {this.productDetailItemId} cartItemCount ={this.state.cartItemCount} addToCart = {this.addToCart} params = {this.state.view.params} />
+        <Route path="/product/:id" render={props =>
+          <ProductDetails {...props} buttonChange = {this.props.buttonChange} buttonText ={this.state.btnText} id = {this.productDetailItemId} cartItemCount ={this.state.cartItemCount} addToCart = {this.addToCart} params = {this.state.view.params} />
         } />
 
         <Route path="/checkout" render={props =>
