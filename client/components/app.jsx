@@ -69,6 +69,8 @@ export default class App extends React.Component {
       itemToAdd.price = itemToAdd.quantity * itemToAdd.price;
       let allProducts = this.state.cart.concat(itemToAdd);
       let itemCount = this.state.cartItemCount + parseInt(quantity);
+      localStorage.cart = JSON.stringify(allProducts);
+      localStorage.cartItemCount = parseInt(itemCount);
       this.setState({ cart: allProducts, cartItemCount: itemCount });
     } else {
       let otherItemsInCart = this.state.cart.filter(item => { return item.id !== productId; });
@@ -89,6 +91,8 @@ export default class App extends React.Component {
       } else {
         let itemsCountOld = this.state.cartItemCount;
         let itemCount = itemsCountOld + parseInt(itemToAdd.quantity) - oldQuantity;
+        localStorage.cart = JSON.stringify(allCartItems);
+        localStorage.cartItemCount = parseInt(itemCount);
         this.setState({ cart: allCartItems, cartItemCount: itemCount });
       }
     }
@@ -106,6 +110,8 @@ export default class App extends React.Component {
       return item !== product;
     });
     let cartItemCount = this.state.cartItemCount - product.quantity;
+    localStorage.cart = JSON.stringify(products);
+    localStorage.cartItemCount = cartItemCount;
 
     this.setState({ cart: products, cartItemCount: cartItemCount });
 
@@ -117,12 +123,21 @@ export default class App extends React.Component {
       headers: { 'Content-type': 'application/json' }
     })
       .then(response => response.json);
+    localStorage.cart = '[]';
     this.setState({ cart: [], cartItemCount: 0, history: orderInfo });
   }
 
   componentDidMount() {
+
     this.getAllProducts();
-    this.getCartItems();
+    if (!localStorage.cart) {
+      localStorage.cart = '[]';
+      localStorage.cartItemCount = 0;
+    } else {
+      this.setState({ cart: JSON.parse(localStorage.cart), cartItemCount: parseInt(localStorage.cartItemCount) });
+
+    }
+
     this.setState({ buttonText: 'Add to cart' });
   }
 
