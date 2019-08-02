@@ -6,14 +6,13 @@ import CartSummary from './cartSummary';
 import CheckoutForm from './checkout-form';
 import ThankYou from './thank-you';
 import MainPage from './main-page';
-import { HashRouter, Route } from 'react-router-dom';
+import { BrowserRouter, Route } from 'react-router-dom';
 
 export default class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       products: [],
-      view: { name: 'main-page', params: {} },
       cart: [],
       cartItemCount: 0,
       bestSellers: [],
@@ -21,12 +20,9 @@ export default class App extends React.Component {
       quantity: 1
 
     };
-    this.productDetailItemId = null;
-    this.setView = this.setView.bind(this);
     this.addToCart = this.addToCart.bind(this);
     this.placeOrder = this.placeOrder.bind(this);
     this.deleteFromCart = this.deleteFromCart.bind(this);
-    this.getProductDetailId = this.getProductDetailId.bind(this);
 
   }
 
@@ -122,16 +118,6 @@ export default class App extends React.Component {
     })
       .then(response => response.json);
     this.setState({ cart: [], cartItemCount: 0, history: orderInfo });
-    // this.setView('thanks', {});
-  }
-
-  setView(name, params, id) {
-    this.setState({ view: { name: name, params: params } });
-    // this.productDetailItemId = id;
-  }
-
-  getProductDetailId(id) {
-    this.productDetailItemId = id;
   }
 
   componentDidMount() {
@@ -142,14 +128,14 @@ export default class App extends React.Component {
 
   render() {
     return (
-      <HashRouter>
+      <BrowserRouter>
 
         <Route exact path="/" render={props =>
-          <MainPage addToCart ={this.addToCart} onClick = {this.getProductDetailId} products = {this.state.bestSellers} cartItemCount = {this.state.cartItemCount}></MainPage>
+          <MainPage addToCart ={this.addToCart} products = {this.state.bestSellers} cartItemCount = {this.state.cartItemCount}></MainPage>
         } />
 
         <Route path="/cart-summary" render={props =>
-          <CartSummary onClick = {this.setView} cartItemCount ={this.state.cartItemCount} cart = {this.state.cart} remove ={this.deleteFromCart}/>
+          <CartSummary cartItemCount ={this.state.cartItemCount} cart = {this.state.cart} remove ={this.deleteFromCart}/>
         } />
         <Route path="/catalog" render={props =>
           <div>
@@ -169,7 +155,7 @@ export default class App extends React.Component {
           </div>
         } />
         <Route path="/product/:id" render={props =>
-          <ProductDetails {...props} buttonChange = {this.props.buttonChange} buttonText ={this.state.btnText} id = {this.productDetailItemId} cartItemCount ={this.state.cartItemCount} addToCart = {this.addToCart} params = {this.state.view.params} />
+          <ProductDetails {...props} buttonChange = {this.props.buttonChange} buttonText ={this.state.btnText} id = {this.productDetailItemId} cartItemCount ={this.state.cartItemCount} addToCart = {this.addToCart} />
         } />
 
         <Route path="/checkout" render={props =>
@@ -180,7 +166,7 @@ export default class App extends React.Component {
           <ThankYou orderHistory ={this.state.history} cartItemCount = {this.state.cartItemCount} />
         } />
 
-      </HashRouter>
+      </BrowserRouter>
     );
   }
 }
