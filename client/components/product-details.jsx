@@ -45,13 +45,13 @@ export default class ProductDetails extends React.Component {
       return (
         <div className = "product-details-style">
           <div className ={'pink-stripe'}>40% OFF YOUR ENTIRE ORDER WITH CODE PARTY40 AT CHECKOUT</div>
-          <Header onClick = {this.props.onClick} cartItemCount ={this.props.cartItemCount}></Header>
+          <Header cartItemCount ={this.props.cartItemCount}></Header>
           <div className = {'details-container'}>
 
             <div className={' mt-3 mb-3 '}>
               <div className={'col-sm-12 col-lg-6 col-xs-6 details'}>
                 <Link to ='/catalog'>
-                  <div onClick ={() => this.props.onClick('catalog', {})} className={'mb-2 point text-style'}><i className = "fas fa-chevron-left"></i> Back to Catalog</div>
+                  <div onClick ={() => this.props.onClick('catalog', {})} className={'mb-2 point  dark-grey'}><i className = "fas fa-chevron-left"></i> Back to Catalog</div>
                 </Link>
                 <img className ="details-img mb-2"src={this.state.product.image} />
               </div>
@@ -63,7 +63,7 @@ export default class ProductDetails extends React.Component {
                   <p>{this.state.product.shortDescription}</p>
 
                   <div className = "qty-display" >
-                    <label className ="qty-label qty-font mr-2" htmlFor="quantity">Qty: </label>
+                    <label className ="qty-label qty-font mr-2" htmlFor="quantity">QTY: </label>
                     <select onChange={this.handleChange} value = {this.state.quantity} className ="mr-3 qty-font " id="quantity" name="quantity">
                       <option value="1">1</option>
                       <option value="2">2</option>

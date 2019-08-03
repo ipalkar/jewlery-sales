@@ -327,9 +327,11 @@ export default class CheckoutForm extends React.Component {
 
           <div className ={'col-md-7 order-form form-group '}>
 
-            <Link className = "checkout-logo point   mt-2" to ='/'>
-              <span >jeweliqo</span>
-            </Link>
+            <div className ="checkout-header">
+              <Link className = "checkout-logo point   mt-2" to ='/'>
+                <span className ="checkout-logo" >jeweliqo</span>
+              </Link>
+            </div>
 
             <FormGroup>
               <Label>Contact information</Label>

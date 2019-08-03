@@ -50,7 +50,7 @@ export default class Modal extends React.Component {
               <div className = {'point'} onClick = {() => this.props.showFullDetails('details', {}, this.props.id)}>{this.props.name}</div>
               <div className ="mb-2">${(this.props.price * 0.01).toFixed(2) }</div>
 
-              <label className ="qty-label qty-font mr-2" htmlFor="quantity">Qty: </label>
+              <label className ="qty-label qty-font mr-2" htmlFor="quantity">QTY: </label>
               <select onChange={this.handleChange} value = {this.state.quantity} className ="mr-3 qty-font" id="quantity" name="quantity">
                 <option value="1">1</option>
                 <option value="2">2</option>

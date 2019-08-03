@@ -6,7 +6,7 @@ import CartSummary from './cartSummary';
 import CheckoutForm from './checkout-form';
 import ThankYou from './thank-you';
 import MainPage from './main-page';
-import { BrowserRouter, Route } from 'react-router-dom';
+import { HashRouter, Route } from 'react-router-dom';
 
 export default class App extends React.Component {
   constructor(props) {
@@ -111,7 +111,7 @@ export default class App extends React.Component {
     });
     let cartItemCount = this.state.cartItemCount - product.quantity;
     localStorage.cart = JSON.stringify(products);
-    localStorage.cartItemCount = cartItemCount;
+    localStorage.cartItemCount = parseInt(cartItemCount);
 
     this.setState({ cart: products, cartItemCount: cartItemCount });
 
@@ -124,6 +124,7 @@ export default class App extends React.Component {
     })
       .then(response => response.json);
     localStorage.cart = '[]';
+    localStorage.cartItemCount = 0;
     this.setState({ cart: [], cartItemCount: 0, history: orderInfo });
   }
 
@@ -143,7 +144,7 @@ export default class App extends React.Component {
 
   render() {
     return (
-      <BrowserRouter>
+      <HashRouter>
 
         <Route exact path="/" render={props =>
           <MainPage addToCart ={this.addToCart} products = {this.state.bestSellers} cartItemCount = {this.state.cartItemCount}></MainPage>
@@ -181,7 +182,7 @@ export default class App extends React.Component {
           <ThankYou orderHistory ={this.state.history} cartItemCount = {this.state.cartItemCount} />
         } />
 
-      </BrowserRouter>
+      </HashRouter>
     );
   }
 }

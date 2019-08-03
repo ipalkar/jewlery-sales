@@ -371,6 +371,13 @@ a:hover + .quick-shop, .quick-shop:hover{
     color: grey
 }
 
+
+.dark-grey{
+    color: #444444;
+    font-family: 'Ovo', Georgia, serif;
+    display: inline-block;
+}
+
 .summary-img{
     height: 8rem;
 }
@@ -398,8 +405,12 @@ label{
     color: #E294AB;
 }
 
-.checkout-logo a:hover{
+.checkout-header a:hover{
     background-color: #fff7fd;
+}
+
+.checkout-header a{
+    text-decoration: none;
 }
 
 
